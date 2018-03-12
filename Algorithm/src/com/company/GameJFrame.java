@@ -30,7 +30,6 @@ public class GameJFrame {
             for (int j = 0; j<columns; j++){
                 JPanel panel = new JPanel();
                 panel.setBackground(color);
-                //panel.addMouseListener(new Mover());
                 if ( color == color1){ color = color2; }
                 else { color = color1; }
                 pane.add(panel);
