@@ -38,7 +38,7 @@ public class GameJFrame {
         }
 
         rebuildFrame(GameBoard.board);
-        /*for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 if (i<3 && (i+j)%2==1) {
                     JLabel piece = new JLabel(new ImageIcon("image/white.png"));
@@ -51,7 +51,7 @@ public class GameJFrame {
                     jPanel.add(piece);
                 }
             }
-        }*/
+        }
         pane.repaint();
         pane.revalidate();
     }
