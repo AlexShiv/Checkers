@@ -2,8 +2,8 @@ package com.company;
 
 public class GameBoard {
 
-    //public static int [][] board = new int[8][8];
-    public static int [][] board = {
+    public static int [][] board = new int[8][8];
+    /*public static int [][] board = {
             {3,0,3,0,3,-2,3,0},
             {0,3,0,3,0,3,0,3},
             {3,0,3,0,3,0,3,0},
@@ -12,9 +12,9 @@ public class GameBoard {
             {0,3,0,3,0,3,0,3},
             {3,0,3,0,3,0,3,0},
             {0,3,0,3,0,3,0,3},
-    };
+    };*/
 
-    /*public GameBoard() {
+    public GameBoard() {
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < board[i].length; j++){
                 if ((i+j)%2!=1) {
@@ -28,7 +28,7 @@ public class GameBoard {
                 }
             }
         }
-    }*/
+    }
 
     public static void print () {
         for (int i = 0; i< board.length; i++){

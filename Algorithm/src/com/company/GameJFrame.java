@@ -30,7 +30,6 @@ public class GameJFrame {
             for (int j = 0; j<columns; j++){
                 JPanel panel = new JPanel();
                 panel.setBackground(color);
-                //panel.addMouseListener(new Mover());
                 if ( color == color1){ color = color2; }
                 else { color = color1; }
                 pane.add(panel);
@@ -38,7 +37,7 @@ public class GameJFrame {
         }
 
         rebuildFrame(GameBoard.board);
-        /*for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 if (i<3 && (i+j)%2==1) {
                     JLabel piece = new JLabel(new ImageIcon("image/white.png"));
@@ -51,7 +50,7 @@ public class GameJFrame {
                     jPanel.add(piece);
                 }
             }
-        }*/
+        }
         pane.repaint();
         pane.revalidate();
     }
