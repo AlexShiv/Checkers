@@ -324,29 +324,29 @@ public class Mover implements MouseListener{
         for (int i = 0; i < 8 ; i++){
             for (int j = 0; j < 8; j++){
                 try {
-                    if (a[fromX][fromY] == step && Math.abs(a[fromX-1][fromY-1]) == kill && a[fromX-2][fromY-2] == 0) {
-                        points.add(new Point(fromX-2,fromY-2));
+                    if (a[i][j] == step && Math.abs(a[i-1][j-1]) == kill && a[i-2][j-2] == 0) {
+                        points.add(new Point(i,j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("1.0");
                 }
                 try {
-                    if (a[fromX][fromY] == step && Math.abs(a[fromX-1][fromY+1]) == kill && a[fromX-2][fromY+2] == 0) {
-                        points.add(new Point(fromX-2,fromY+2));
+                    if (a[i][j] == step && Math.abs(a[i-1][j+1]) == kill && a[i-2][j+2] == 0) {
+                        points.add(new Point(i,j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("2.0");
                 }
                 try {
-                    if (a[fromX][fromY] == step && Math.abs(a[fromX+1][fromY-1]) == kill && a[fromX+2][fromY-2] == 0) {
-                        points.add(new Point(fromX+2,fromY-2));
+                    if (a[i][j] == step && Math.abs(a[i+1][j-1]) == kill && a[i+2][j-2] == 0) {
+                        points.add(new Point(i,j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("3.0");
                 }
                 try {
-                    if (a[fromX][fromY] == step && Math.abs(a[fromX+1][fromY+1]) == kill && a[fromX+2][fromY+2] == 0) {
-                        points.add(new Point(fromX+2,fromY+2));
+                    if (a[i][j] == step && Math.abs(a[i+1][j+1]) == kill && a[i+2][j+2] == 0) {
+                        points.add(new Point(i,j));
                     }
                 } catch (Throwable ex){
                     System.out.println("4.0");
