@@ -53,6 +53,7 @@ public class Mover implements MouseListener{
     private boolean canMove(int[][] a, int x1, int y1, int x2, int y2) {
         if (Math.abs(a[x1][y1]) == step) {
             if (a[x2][y2] == 0) {
+                // проверка хода обычной шашки
                 if ((step == 1) && (Math.abs(y1 - y2) == 1) && (x1 - x2 == -1)) {
                     return true;
                 }
@@ -61,41 +62,32 @@ public class Mover implements MouseListener{
                 }
                 //проверка хода дамки
                 if (a[x1][y1] < 0 && Math.abs(a[x1][y1]) == step) {
-                    int i, j, k, t;//i и j выполняют одно и то же
-                    for (i = 1, j = 1; x1 - i != -1 && y1 - j != -1; i++, j++ ) {
-
-                        if (x1-i == x2 && y1-j == y2) {
-                            for (k = 1, t = 1; x1 - k != x2 && y1 - t != y2; k++, t++) {
-                                if (a[x1-k][y1-t] != 0)
-                                    return false;
-                            }
+                    int i, t;
+                    for (i = 1; x1 - i != -1 && y1 - i != -1; i++ ) {
+                        if (x1-i != x2 && y1-i != y2 && a[x1-i][y1-i] != 0)
+                            break;
+                        else if (x1-i == x2 && y1-i == y2) {
                             return true;
                         }
                     }
-                    for (i = 1, j = 1; x1 + i != 8 && y1 + j != 8; i++, j++ ) {
-                        if (x1+i == x2 && y1+j == y2) {
-                            for (k = 1, t = 1; x1 + k != x2 && y1 + t != y2; k++, t++) {
-                                if (a[x1+k][y1+t] != 0)
-                                    return false;
-                            }
+                    for (i = 1; x1 + i != 8 && y1 + i != 8; i++ ) {
+                        if (x1+i != x2 && y1+i != y2 && a[x1+i][y1+i] != 0)
+                            break;
+                        if (x1+i == x2 && y1+i == y2) {
                             return true;
                         }
                     }
-                    for (i = 1, j = 1; x1 - i != -1 && y1 + j != 8; i++, j++ ) {
-                        if (x1-i == x2 && y1+j == y2) {
-                            for (k = 1, t = 1; x1 - k != x2 && y1 + t != y2; k++, t++) {
-                                if (a[x1-k][y1+t] != 0)
-                                    return false;
-                            }
+                    for (i = 1; x1 - i != -1 && y1 + i != 8; i++ ) {
+                        if (x1-i != x2 && y1+i != y2 && a[x1-i][y1+i] != 0)
+                            break;
+                        if (x1-i == x2 && y1+i == y2) {
                             return true;
                         }
                     }
-                    for (i = 1, j = 1; x1 + i != 8 && y1 - j != -1; i++, j++ ) {
-                        if (x1+i == x2 && y1-j == y2) {
-                            for (k = 1, t = 1; x1 + k != x2 && y1 - t != y2; k++, t++) {
-                                if (a[x1+k][y1-t] != 0)
-                                    return false;
-                            }
+                    for (i = 1; x1 + i != 8 && y1 - i != -1; i++) {
+                        if (x1+i != x2 && y1-i != y2 && a[x1+i][y1-i] != 0)
+                            break;
+                        if (x1+i == x2 && y1-i == y2) {
                             return true;
                         }
                     }
@@ -165,69 +157,69 @@ public class Mover implements MouseListener{
 
     public ArrayList<Point> canFightCat(int[][] a, int x1, int y1, int kill) {
         ArrayList<Point> points = new ArrayList<>();
-        int i, j, flag = 0;
+        int i, flag = 0;
         try {
-            for (i = 1, j = 1; x1 - i != -1 && y1 - j != -1; i++, j++) {
-                if (flag == 0 && Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - j - 1] == 0) {
-                    points.add(new Point(x1-i-1, y1-j-1));
+            for (i = 1, i = 1; x1 - i != -1 && y1 - i != -1; i++) {
+                if (flag == 0 && Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - i - 1] == 0) {
+                    points.add(new Point(x1-i-1, y1-i-1));
                     flag = 1;
                 }
-                if (Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - j - 1] != 0)
+                if (Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - i - 1] != 0)
                     break;
-                if (flag == 1 && a[x1-i-1][y1-j-1] == 0) {
-                    points.add(new Point(x1-i-1, y1-j-1));
-                } else if (flag == 1 && a[x1-i-1][y1-j-1] != 0) break;
+                if (flag == 1 && a[x1-i-1][y1-i-1] == 0) {
+                    points.add(new Point(x1-i-1, y1-i-1));
+                } else if (flag == 1 && a[x1-i-1][y1-i-1] != 0) break;
             }
         } catch (Throwable ex) {
-            System.out.println(".");
+            System.out.println("1");
         }
         flag = 0;
         try {
-            for (i = 1, j = 1; x1 - i != -1 && y1 + j != 8; i++, j++) {
-                if (flag == 0 && Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + j + 1] == 0) {
-                    points.add(new Point(x1-i-1, y1+j+1));
+            for (i = 1, i = 1; x1 - i != -1 && y1 + i != 8; i++) {
+                if (flag == 0 && Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + i + 1] == 0) {
+                    points.add(new Point(x1-i-1, y1+i+1));
                     flag = 1;
                 }
-                if (Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + j + 1] != 0)
+                if (Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + i + 1] != 0)
                     break;
-                if (flag == 1 && a[x1-i-1][y1+j+1] == 0) {
-                    points.add(new Point(x1-i-1, y1+j+1));
-                } else if (flag == 1 && a[x1-i-1][y1+j+1] != 0) break;
+                if (flag == 1 && a[x1-i-1][y1+i+1] == 0) {
+                    points.add(new Point(x1-i-1, y1+i+1));
+                } else if (flag == 1 && a[x1-i-1][y1+i+1] != 0) break;
             }
         } catch (Throwable ex) {
-            System.out.println(".");
+            System.out.println("2");
         }
         flag = 0;
         try {
-            for (i = 1, j = 1; x1 + i != 8 && y1 - j != -1; i++, j++) {
-                if (flag == 0 && Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - j - 1] == 0) {
-                    points.add(new Point(x1+i+1, y1-j-1));
+            for (i = 1, i = 1; x1 + i != 8 && y1 - i != -1; i++) {
+                if (flag == 0 && Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - i - 1] == 0) {
+                    points.add(new Point(x1+i+1, y1-i-1));
                     flag = 1;
                 }
-                if (Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - j - 1] != 0)
+                if (Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - i - 1] != 0)
                     break;
-                if (flag == 1 && a[x1+i+1][y1-j-1] == 0) {
-                    points.add(new Point(x1+i+1, y1-j-1));
-                } else if (flag == 1 && a[x1+i+1][y1-j-1] != 0) break;
+                if (flag == 1 && a[x1+i+1][y1-i-1] == 0) {
+                    points.add(new Point(x1+i+1, y1-i-1));
+                } else if (flag == 1 && a[x1+i+1][y1-i-1] != 0) break;
             }
         } catch (Throwable ex) {
-            System.out.println(".");
+            System.out.println("3");
         }
         flag = 0;
         try {
-            for (i = 1, j = 1; x1 + i != 8 && y1 + j != -1; i++, j++) {
-                if (flag == 0 && Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + j + 1] == 0) {
-                    points.add(new Point(x1+i+1, y1+j+1));
+            for (i = 1, i = 1; x1 + i != 8 && y1 + i != -1; i++) {
+                if (flag == 0 && Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + i + 1] == 0) {
+                    points.add(new Point(x1+i+1, y1+i+1));
                     flag = 1;
                 }
-                if (Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + j + 1] != 0)
+                if (Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + i + 1] != 0)
                     break;
-                if (flag == 1 && a[x1+i+1][y1+j+1] == 0) {
-                    points.add(new Point(x1+i+1, y1+j+1));
-                } else if (flag == 1 && a[x1+i+1][y1+j+1] != 0) break;
+                if (flag == 1 && a[x1+i+1][y1+i+1] == 0) {
+                    points.add(new Point(x1+i+1, y1+i+1));
+                } else if (flag == 1 && a[x1+i+1][y1+i+1] != 0) break;
             }
         } catch (Throwable ex) {
-            System.out.println(".");
+            System.out.println("4");
         }
         return points;
     }
@@ -331,59 +323,33 @@ public class Mover implements MouseListener{
         }
         for (int i = 0; i < 8 ; i++){
             for (int j = 0; j < 8; j++){
-                if ((j < 2) && (i < 2)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j+1]) == kill) && (a[i+2][j+2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
+                try {
+                    if (a[i][j] == step && Math.abs(a[i-1][j-1]) == kill && a[i-2][j-2] == 0) {
+                        points.add(new Point(i,j));
                     }
+                } catch (Throwable ex) {
+                    System.out.println("1.0");
                 }
-                if ((i < 2) && (j > 1) && (j < 6)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j+1]) == kill) && (a[i+2][j+2] == 0) || (Math.abs(a[i+1][j-1]) == kill) && (a[i+2][j-2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
+                try {
+                    if (a[i][j] == step && Math.abs(a[i-1][j+1]) == kill && a[i-2][j+2] == 0) {
+                        points.add(new Point(i,j));
                     }
+                } catch (Throwable ex) {
+                    System.out.println("2.0");
                 }
-                if ((i < 2) && (j > 5)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j-1]) == kill) && (a[i+2][j-2]) == 0)){
-                        Point point = new Point(i,j);
-                        points.add(point);
+                try {
+                    if (a[i][j] == step && Math.abs(a[i+1][j-1]) == kill && a[i+2][j-2] == 0) {
+                        points.add(new Point(i,j));
                     }
+                } catch (Throwable ex) {
+                    System.out.println("3.0");
                 }
-                if ((i > 1) && (i < 6) && (j < 2)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j+1]) == kill) && (a[i+2][j+2] == 0) || (Math.abs(a[i-1][j+1]) == kill) && (a[i-2][j+2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
+                try {
+                    if (a[i][j] == step && Math.abs(a[i+1][j+1]) == kill && a[i+2][j+2] == 0) {
+                        points.add(new Point(i,j));
                     }
-                }
-                if ((i > 1) && (i < 6) && (j > 1) && (j < 6)) {
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j+1]) == kill) && (a[i+2][j+2] == 0) || (Math.abs(a[i-1][j-1]) == kill) && (a[i-2][j-2] == 0) || (Math.abs(a[i+1][j-1]) == kill) && (a[i+2][j-2] == 0) || (Math.abs(a[i-1][j+1]) == kill) && (a[i-2][j+2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
-                    }
-                }
-                if ((i > 1) && (i < 6) && (j > 5)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i+1][j-1]) == kill) && (a[i+2][j-2] == 0) || (Math.abs(a[i-1][j-1]) == kill) && (a[i-2][j-2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
-                    }
-                }
-                if ((i > 5) && (j < 2)){
-                    if ((a[i][j] == step) && (Math.abs(a[i-1][j+1]) == kill) && (a[i-2][j+2] == 0)){
-                        Point point = new Point(i,j);
-                        points.add(point);
-                    }
-                }
-                if ((i > 5) && (j > 1) && (j < 6)){
-                    if ((a[i][j] == step) && ((Math.abs(a[i-1][j-1]) == kill) && (a[i-2][j-2] == 0) || (Math.abs(a[i-1][j+1]) == kill) && (a[i-2][j+2] == 0))){
-                        Point point = new Point(i,j);
-                        points.add(point);
-                    }
-                }
-                if ((i > 5) && (j > 5)){
-                    if ((a[i][j] == step) && (Math.abs(a[i-1][j-1]) == kill) && (a[i-2][j-2] == 0)){
-                        Point point = new Point(i,j);
-                        points.add(point);
-                    }
+                } catch (Throwable ex){
+                    System.out.println("4.0");
                 }
             }
         }
@@ -397,11 +363,6 @@ public class Mover implements MouseListener{
             return false;
         }
         //Невозможность хода
-        /*int step = 0;
-        if (kill == 1)
-            step = 2;
-        else if (kill == 2)
-            step = 1;*/
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 if (kill == 1) {
@@ -543,12 +504,8 @@ public class Mover implements MouseListener{
             }
             GameJFrame.rebuildFrame(GameBoard.board);
             click = 1;
-            /*int kill = 0;
-            if (step == 1) {
-                kill = 2;
-            } else if (step == 2) {
-                kill = 1;
-            }*/
+
+            // Проверка победы
             if (!nomore(GameBoard.board, step)) {
                 if (win(GameBoard.board, step)) {
                     String player;
@@ -557,7 +514,6 @@ public class Mover implements MouseListener{
                     JOptionPane.showMessageDialog(null, "Победа " + player);
                     System.exit(0);
                 }
-
             } else {
                 String player;
                 if (step == 2) player = "белых";
