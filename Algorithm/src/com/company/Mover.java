@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class Mover implements MouseListener{
+public class Mover implements MouseListener {
 
     public int step = 2;//Изменить на 2!!!
     private int click = 1;
@@ -63,31 +63,31 @@ public class Mover implements MouseListener{
                 //проверка хода дамки
                 if (a[x1][y1] < 0 && Math.abs(a[x1][y1]) == step) {
                     int i, t;
-                    for (i = 1; x1 - i != -1 && y1 - i != -1; i++ ) {
-                        if (x1-i != x2 && y1-i != y2 && a[x1-i][y1-i] != 0)
+                    for (i = 1; x1 - i != -1 && y1 - i != -1; i++) {
+                        if (x1 - i != x2 && y1 - i != y2 && a[x1 - i][y1 - i] != 0)
                             break;
-                        else if (x1-i == x2 && y1-i == y2) {
+                        else if (x1 - i == x2 && y1 - i == y2) {
                             return true;
                         }
                     }
-                    for (i = 1; x1 + i != 8 && y1 + i != 8; i++ ) {
-                        if (x1+i != x2 && y1+i != y2 && a[x1+i][y1+i] != 0)
+                    for (i = 1; x1 + i != 8 && y1 + i != 8; i++) {
+                        if (x1 + i != x2 && y1 + i != y2 && a[x1 + i][y1 + i] != 0)
                             break;
-                        if (x1+i == x2 && y1+i == y2) {
+                        if (x1 + i == x2 && y1 + i == y2) {
                             return true;
                         }
                     }
-                    for (i = 1; x1 - i != -1 && y1 + i != 8; i++ ) {
-                        if (x1-i != x2 && y1+i != y2 && a[x1-i][y1+i] != 0)
+                    for (i = 1; x1 - i != -1 && y1 + i != 8; i++) {
+                        if (x1 - i != x2 && y1 + i != y2 && a[x1 - i][y1 + i] != 0)
                             break;
-                        if (x1-i == x2 && y1+i == y2) {
+                        if (x1 - i == x2 && y1 + i == y2) {
                             return true;
                         }
                     }
                     for (i = 1; x1 + i != 8 && y1 - i != -1; i++) {
-                        if (x1+i != x2 && y1-i != y2 && a[x1+i][y1-i] != 0)
+                        if (x1 + i != x2 && y1 - i != y2 && a[x1 + i][y1 - i] != 0)
                             break;
-                        if (x1+i == x2 && y1-i == y2) {
+                        if (x1 + i == x2 && y1 - i == y2) {
                             return true;
                         }
                     }
@@ -111,31 +111,31 @@ public class Mover implements MouseListener{
             a[x2][y2] = a[x1][y1];
             a[x1][y1] = 0;
             int i, j;
-            if (x1 > x2 && y1 > y2 ) {
+            if (x1 > x2 && y1 > y2) {
                 for (i = 1, j = 1; x1 - i != -1 && y1 - j != -1; i++, j++) {
-                    if (Math.abs(a[x1-i][y1-i]) == kill) {
-                        a[x1-i][y1-i] = 0;
+                    if (Math.abs(a[x1 - i][y1 - i]) == kill) {
+                        a[x1 - i][y1 - i] = 0;
                         break;
                     }
                 }
-            } else if (x1 > x2 && y1 < y2 ) {
+            } else if (x1 > x2 && y1 < y2) {
                 for (i = 1, j = 1; x1 - i != -1 && y1 + j != 8; i++, j++) {
-                    if (Math.abs(a[x1-i][y1+i]) == kill) {
-                        a[x1-i][y1+i] = 0;
+                    if (Math.abs(a[x1 - i][y1 + i]) == kill) {
+                        a[x1 - i][y1 + i] = 0;
                         break;
                     }
                 }
-            } else if (x1 < x2 && y1 > y2 ) {
+            } else if (x1 < x2 && y1 > y2) {
                 for (i = 1, j = 1; x1 + i != 8 && y1 - j != -1; i++, j++) {
-                    if (Math.abs(a[x1+i][y1-i]) == kill) {
-                        a[x1+i][y1-i] = 0;
+                    if (Math.abs(a[x1 + i][y1 - i]) == kill) {
+                        a[x1 + i][y1 - i] = 0;
                         break;
                     }
                 }
-            } else if (x1 < x2 && y1 < y2 ) {
+            } else if (x1 < x2 && y1 < y2) {
                 for (i = 1, j = 1; x1 + i != 8 && y1 + j != 8; i++, j++) {
-                    if (Math.abs(a[x1+i][y1+i]) == kill) {
-                        a[x1+i][y1+i] = 0;
+                    if (Math.abs(a[x1 + i][y1 + i]) == kill) {
+                        a[x1 + i][y1 + i] = 0;
                         break;
                     }
                 }
@@ -161,14 +161,14 @@ public class Mover implements MouseListener{
         try {
             for (i = 1, i = 1; x1 - i != -1 && y1 - i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - i - 1] == 0) {
-                    points.add(new Point(x1-i-1, y1-i-1));
+                    points.add(new Point(x1 - i - 1, y1 - i - 1));
                     flag = 1;
                 }
                 if (Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - i - 1] != 0)
                     break;
-                if (flag == 1 && a[x1-i-1][y1-i-1] == 0) {
-                    points.add(new Point(x1-i-1, y1-i-1));
-                } else if (flag == 1 && a[x1-i-1][y1-i-1] != 0) break;
+                if (flag == 1 && a[x1 - i - 1][y1 - i - 1] == 0) {
+                    points.add(new Point(x1 - i - 1, y1 - i - 1));
+                } else if (flag == 1 && a[x1 - i - 1][y1 - i - 1] != 0) break;
             }
         } catch (Throwable ex) {
             System.out.println("1");
@@ -177,14 +177,14 @@ public class Mover implements MouseListener{
         try {
             for (i = 1, i = 1; x1 - i != -1 && y1 + i != 8; i++) {
                 if (flag == 0 && Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + i + 1] == 0) {
-                    points.add(new Point(x1-i-1, y1+i+1));
+                    points.add(new Point(x1 - i - 1, y1 + i + 1));
                     flag = 1;
                 }
                 if (Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + i + 1] != 0)
                     break;
-                if (flag == 1 && a[x1-i-1][y1+i+1] == 0) {
-                    points.add(new Point(x1-i-1, y1+i+1));
-                } else if (flag == 1 && a[x1-i-1][y1+i+1] != 0) break;
+                if (flag == 1 && a[x1 - i - 1][y1 + i + 1] == 0) {
+                    points.add(new Point(x1 - i - 1, y1 + i + 1));
+                } else if (flag == 1 && a[x1 - i - 1][y1 + i + 1] != 0) break;
             }
         } catch (Throwable ex) {
             System.out.println("2");
@@ -193,14 +193,14 @@ public class Mover implements MouseListener{
         try {
             for (i = 1, i = 1; x1 + i != 8 && y1 - i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - i - 1] == 0) {
-                    points.add(new Point(x1+i+1, y1-i-1));
+                    points.add(new Point(x1 + i + 1, y1 - i - 1));
                     flag = 1;
                 }
                 if (Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - i - 1] != 0)
                     break;
-                if (flag == 1 && a[x1+i+1][y1-i-1] == 0) {
-                    points.add(new Point(x1+i+1, y1-i-1));
-                } else if (flag == 1 && a[x1+i+1][y1-i-1] != 0) break;
+                if (flag == 1 && a[x1 + i + 1][y1 - i - 1] == 0) {
+                    points.add(new Point(x1 + i + 1, y1 - i - 1));
+                } else if (flag == 1 && a[x1 + i + 1][y1 - i - 1] != 0) break;
             }
         } catch (Throwable ex) {
             System.out.println("3");
@@ -209,14 +209,14 @@ public class Mover implements MouseListener{
         try {
             for (i = 1, i = 1; x1 + i != 8 && y1 + i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + i + 1] == 0) {
-                    points.add(new Point(x1+i+1, y1+i+1));
+                    points.add(new Point(x1 + i + 1, y1 + i + 1));
                     flag = 1;
                 }
                 if (Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + i + 1] != 0)
                     break;
-                if (flag == 1 && a[x1+i+1][y1+i+1] == 0) {
-                    points.add(new Point(x1+i+1, y1+i+1));
-                } else if (flag == 1 && a[x1+i+1][y1+i+1] != 0) break;
+                if (flag == 1 && a[x1 + i + 1][y1 + i + 1] == 0) {
+                    points.add(new Point(x1 + i + 1, y1 + i + 1));
+                } else if (flag == 1 && a[x1 + i + 1][y1 + i + 1] != 0) break;
             }
         } catch (Throwable ex) {
             System.out.println("4");
@@ -224,15 +224,15 @@ public class Mover implements MouseListener{
         return points;
     }
 
-    public void fight(int[][] a, int x1, int y1, int x2, int y2){
+    public void fight(int[][] a, int x1, int y1, int x2, int y2) {
         int kill = 0;
         if (step == 1) {
             kill = 2;
         } else if (step == 2) {
             kill = 1;
         }
-        Point from = new Point(x1,y1);
-        if (canFight(a).contains(from)){
+        Point from = new Point(x1, y1);
+        if (canFight(a).contains(from)) {
             Point to = new Point(x2, y2);
             Point[] neighbor = sightFight(a, from.x, from.y, kill);
             if (neighbor[0] != null && neighbor[0].equals(to)) {
@@ -259,10 +259,10 @@ public class Mover implements MouseListener{
                 a[x2][y2] = -2;
             }
 
-            if (a[from.x][from.y] == step){
+            if (a[from.x][from.y] == step) {
                 JOptionPane.showMessageDialog(null, "Вы обязаны бить!");
             } else if (!canFight(a).contains(to)) {//если добили, меняем шаг
-                if ((a[x2][y2] > 0) || (canFightCat(a,to.x, to.y, kill).size() == 0 )) {
+                if ((a[x2][y2] > 0) || (canFightCat(a, to.x, to.y, kill).size() == 0)) {
                     if (step == 1) {
                         step = 2;
                     } else if (step == 2) {
@@ -282,73 +282,73 @@ public class Mover implements MouseListener{
     public Point[] sightFight(int[][] a, int x, int y, int kill) {
         Point[] arr = new Point[4];
         try {
-            if (a[x][y] == step && Math.abs(a[x-1][y-1]) == kill && a[x-2][y-2] == 0) {
-                arr[0] = new Point(x-2,y-2);
+            if (a[x][y] == step && Math.abs(a[x - 1][y - 1]) == kill && a[x - 2][y - 2] == 0) {
+                arr[0] = new Point(x - 2, y - 2);
             }
         } catch (Throwable ex) {
             arr[0] = null;
         }
         try {
-            if (a[x][y] == step && Math.abs(a[x-1][y+1]) == kill && a[x-2][y+2] == 0) {
-                arr[1] = new Point(x-2,y+2);
+            if (a[x][y] == step && Math.abs(a[x - 1][y + 1]) == kill && a[x - 2][y + 2] == 0) {
+                arr[1] = new Point(x - 2, y + 2);
             }
         } catch (Throwable ex) {
             arr[1] = null;
         }
         try {
-            if (a[x][y] == step && Math.abs(a[x+1][y-1]) == kill && a[x+2][y-2] == 0) {
-                arr[2] = new Point(x+2,y-2);
+            if (a[x][y] == step && Math.abs(a[x + 1][y - 1]) == kill && a[x + 2][y - 2] == 0) {
+                arr[2] = new Point(x + 2, y - 2);
             }
         } catch (Throwable ex) {
             arr[2] = null;
         }
         try {
-            if (a[x][y] == step && Math.abs(a[x+1][y+1]) == kill && a[x+2][y+2] == 0) {
-                arr[3] = new Point(x+2,y+2);
+            if (a[x][y] == step && Math.abs(a[x + 1][y + 1]) == kill && a[x + 2][y + 2] == 0) {
+                arr[3] = new Point(x + 2, y + 2);
             }
-        } catch (Throwable ex){
+        } catch (Throwable ex) {
             arr[3] = null;
         }
         return arr;
     }
 
     //использовать исключения как в методе выше!?
-    public ArrayList<Point> canFight(int[][] a){
+    public ArrayList<Point> canFight(int[][] a) {
         ArrayList<Point> points = new ArrayList<>();
         int kill = 0;
-        if (step == 1){
+        if (step == 1) {
             kill = 2;
-        } else if (step == 2){
+        } else if (step == 2) {
             kill = 1;
         }
-        for (int i = 0; i < 8 ; i++){
-            for (int j = 0; j < 8; j++){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 try {
-                    if (a[i][j] == step && Math.abs(a[i-1][j-1]) == kill && a[i-2][j-2] == 0) {
-                        points.add(new Point(i,j));
+                    if (a[i][j] == step && Math.abs(a[i - 1][j - 1]) == kill && a[i - 2][j - 2] == 0) {
+                        points.add(new Point(i, j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("1.0");
                 }
                 try {
-                    if (a[i][j] == step && Math.abs(a[i-1][j+1]) == kill && a[i-2][j+2] == 0) {
-                        points.add(new Point(i,j));
+                    if (a[i][j] == step && Math.abs(a[i - 1][j + 1]) == kill && a[i - 2][j + 2] == 0) {
+                        points.add(new Point(i, j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("2.0");
                 }
                 try {
-                    if (a[i][j] == step && Math.abs(a[i+1][j-1]) == kill && a[i+2][j-2] == 0) {
-                        points.add(new Point(i,j));
+                    if (a[i][j] == step && Math.abs(a[i + 1][j - 1]) == kill && a[i + 2][j - 2] == 0) {
+                        points.add(new Point(i, j));
                     }
                 } catch (Throwable ex) {
                     System.out.println("3.0");
                 }
                 try {
-                    if (a[i][j] == step && Math.abs(a[i+1][j+1]) == kill && a[i+2][j+2] == 0) {
-                        points.add(new Point(i,j));
+                    if (a[i][j] == step && Math.abs(a[i + 1][j + 1]) == kill && a[i + 2][j + 2] == 0) {
+                        points.add(new Point(i, j));
                     }
-                } catch (Throwable ex){
+                } catch (Throwable ex) {
                     System.out.println("4.0");
                 }
             }
@@ -379,7 +379,7 @@ public class Mover implements MouseListener{
                         } catch (Throwable ex) {
                             System.out.println(".");
                         }
-                    //Если дамка
+                        //Если дамка
                     } else if (a[i][j] < 0) {
                         try {
                             if (Math.abs(a[i][j]) == kill && a[i + 1][j + 1] == 0) return false;
@@ -468,14 +468,13 @@ public class Mover implements MouseListener{
     //нажал
     //код клика?!
     public void mousePressed(MouseEvent e) {
-        if (click == 1){
-            fromY = e.getXOnScreen()/100;
-            fromX = e.getYOnScreen()/100;
+        if (click == 1) {
+            fromY = e.getXOnScreen() / 100;
+            fromX = e.getYOnScreen() / 100;
             click = 2;
-        }
-        else if (click == 2){
-            toY = e.getXOnScreen()/100;
-            toX = e.getYOnScreen()/100;
+        } else if (click == 2) {
+            toY = e.getXOnScreen() / 100;
+            toX = e.getYOnScreen() / 100;
             boolean other = true;
             int kill = 0;
             if (step == 1) {
@@ -490,12 +489,11 @@ public class Mover implements MouseListener{
                     }
                 }
             }
-            if ((GameBoard.board[fromX][fromY] > 0) && (Math.abs(fromX-toX) == 2) && (Math.abs(fromY-toY) == 2)){
+            if ((GameBoard.board[fromX][fromY] > 0) && (Math.abs(fromX - toX) == 2) && (Math.abs(fromY - toY) == 2)) {
                 fight(GameBoard.board, fromX, fromY, toX, toY);
                 System.out.println();
                 GameBoard.print();
-            }
-            else {
+            } else {
                 ArrayList<Point> arrayList = canFightCat(GameBoard.board, fromX, fromY, kill);
                 if (GameBoard.board[fromX][fromY] < 0 && arrayList.size() != 0 && arrayList.contains(new Point(toX, toY))) {
                     fightCat(GameBoard.board, fromX, fromY, toX, toY);

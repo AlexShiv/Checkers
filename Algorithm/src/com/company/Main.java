@@ -6,7 +6,7 @@ public class Main {
         run();
     }
 
-    public static void run(){
+    public static void run() {
         /*final int WHITE = 1;
         final int BLACK = 2;
         final int BLOCKED = 3;
