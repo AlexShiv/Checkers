@@ -466,7 +466,6 @@ public class Mover implements MouseListener {
 
     @Override
     //нажал
-    //код клика?!
     public void mousePressed(MouseEvent e) {
         if (click == 1) {
             fromY = e.getXOnScreen() / 100;
@@ -494,8 +493,8 @@ public class Mover implements MouseListener {
                 System.out.println();
                 GameBoard.print();
             } else {
-                ArrayList<Point> arrayList = canFightCat(GameBoard.board, fromX, fromY, kill);
-                if (GameBoard.board[fromX][fromY] < 0 && arrayList.size() != 0 && arrayList.contains(new Point(toX, toY))) {
+                ArrayList<Point> fightArray = canFightCat(GameBoard.board, fromX, fromY, kill);
+                if (GameBoard.board[fromX][fromY] < 0 && fightArray.size() != 0 && fightArray.contains(new Point(toX, toY))) {
                     fightCat(GameBoard.board, fromX, fromY, toX, toY);
                 } else if (other)
                     move(GameBoard.board, fromX, fromY, toX, toY);

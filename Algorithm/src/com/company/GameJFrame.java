@@ -43,29 +43,13 @@ public class GameJFrame {
         }
 
         rebuildFrame(GameBoard.board);
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (i < 3 && (i + j) % 2 == 1) {
-                    JLabel piece = new JLabel(new ImageIcon("image/white.png"));
-                    JPanel jPanel = (JPanel) pane.getComponent(i * 8 + j);
-                    jPanel.add(piece);
-                }
-                if (i > 4 && (i + j) % 2 == 1) {
-                    JLabel piece = new JLabel(new ImageIcon("image/black.png"));
-                    JPanel jPanel = (JPanel) pane.getComponent(i * 8 + j);
-                    jPanel.add(piece);
-                }
-            }
-        }
-        pane.repaint();
-        pane.revalidate();
     }
 
     public static void rebuildFrame(int[][] a) {
         clearBord();
         Container pane = frame.getContentPane();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 JPanel jPanel = (JPanel) pane.getComponent(i * 8 + j);
                 if (a[i][j] == 1) {
                     JLabel piece = new JLabel(new ImageIcon("image/white.png"));
@@ -91,8 +75,8 @@ public class GameJFrame {
 
     private static void clearBord() {
         Container pane = frame.getContentPane();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
                 JPanel jPanel = (JPanel) pane.getComponent(i * 8 + j);
                 jPanel.removeAll();
             }

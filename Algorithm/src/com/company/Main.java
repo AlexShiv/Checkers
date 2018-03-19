@@ -13,8 +13,8 @@ public class Main {
         final int WHITE_CAT = -1;
         final int BLACK_CAT = -2;*/
 
-        GameJFrame.buildFrame();
         GameBoard g = new GameBoard();
+        GameJFrame.buildFrame();
         Mover m = new Mover();
         g.print();
     }
