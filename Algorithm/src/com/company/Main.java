@@ -15,7 +15,7 @@ public class Main {
 
         GameBoard g = new GameBoard();
         GameJFrame.buildFrame();
-        Mover m = new Mover();
+        //Mover m = new Mover();
         g.print();
     }
 }

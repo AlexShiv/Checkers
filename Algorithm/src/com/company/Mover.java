@@ -485,8 +485,10 @@ public class Mover implements MouseListener {
                 for (int j = 0; j < GameBoard.board.length; j++) {
                     if ((GameBoard.board[i][j] < 0) && (Math.abs(GameBoard.board[i][j]) == step) && (canFightCat(GameBoard.board, i, j, kill).size() != 0)) {
                         other = false;
+                        break;
                     }
                 }
+                if (!other) break;
             }
             if ((GameBoard.board[fromX][fromY] > 0) && (Math.abs(fromX - toX) == 2) && (Math.abs(fromY - toY) == 2)) {
                 fight(GameBoard.board, fromX, fromY, toX, toY);
