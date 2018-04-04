@@ -13,9 +13,11 @@ public class Main {
         final int WHITE_CAT = -1;
         final int BLACK_CAT = -2;*/
 
-        GameBoard g = new GameBoard();
-        GameJFrame.buildFrame();
-        //Mover m = new Mover();
-        g.print();
+        buildMenu();
+    }
+
+    private static void buildMenu() {
+        Menu menu = new Menu();
+        menu.setVisible(true);
     }
 }
