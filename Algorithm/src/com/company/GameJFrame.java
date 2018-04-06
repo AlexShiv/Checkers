@@ -18,7 +18,7 @@ public class GameJFrame {
         frame.setResizable(false);
         frame.setTitle("Ход черных");
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Container pane = frame.getContentPane();
         pane.setLayout(new GridLayout(rows, columns));//как будут отображаться элементы на фрейме!
