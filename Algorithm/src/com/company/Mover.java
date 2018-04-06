@@ -500,6 +500,7 @@ public class Mover implements MouseListener {
                     fightCat(GameBoard.board, fromX, fromY, toX, toY);
                 } else if (other)
                     move(GameBoard.board, fromX, fromY, toX, toY);
+                else JOptionPane.showMessageDialog(null, "Вы обязанны бить");
             }
             GameJFrame.rebuildFrame(GameBoard.board);
             click = 1;
