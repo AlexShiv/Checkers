@@ -50,7 +50,7 @@ public class Mover implements MouseListener {
         } else JOptionPane.showMessageDialog(null, "Вы обязаны бить!");
     }
 
-    private boolean canMove(int[][] a, int x1, int y1, int x2, int y2) {
+    public boolean canMove(int[][] a, int x1, int y1, int x2, int y2) {
         if (Math.abs(a[x1][y1]) == step) {
             if (a[x2][y2] == 0) {
                 // проверка хода обычной шашки
@@ -62,7 +62,7 @@ public class Mover implements MouseListener {
                 }
                 //проверка хода дамки
                 if (a[x1][y1] < 0 && Math.abs(a[x1][y1]) == step) {
-                    int i, t;
+                    int i;
                     for (i = 1; x1 - i != -1 && y1 - i != -1; i++) {
                         if (x1 - i != x2 && y1 - i != y2 && a[x1 - i][y1 - i] != 0)
                             break;
