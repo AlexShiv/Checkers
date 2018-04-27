@@ -36,7 +36,7 @@ public class AI {
         return canChess;
     }
 
-    public boolean canFight(ArrayList<Point> fightChess) {
+    public boolean checkCanFight(ArrayList<Point> fightChess) {
         return fightChess.size() != 0;
     }
 
@@ -47,11 +47,14 @@ public class AI {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[0].length; j++) {
                 if (Math.abs(a[i][j]) == player) {
-
+                    if (mover.canMove(a, i, j, i + 1, j + 1) || mover.canMove(a, i, j, i + 1, j - 1)) {
+                        canMove.add(new Point(i, j));
+                    }
                 }
             }
         }
         return canMove;
     }
+
 
 }
