@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
-    </list>
     <list id="64920705-a5d2-4110-9ca8-8140977de9c5" name="проверка" comment="проверка&#10;&#10;(cherry picked from commit 873f3f6)">
       <changelist_data name="Aleksey Shiyanov" email="shiyanov1998@mail.ru" date="1520878687000" />
+    </list>
+    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/company/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,12 +23,21 @@
       <file leaf-file-name="Mover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2754">
-              <caret line="303" column="9" selection-start-line="303" selection-start-column="9" selection-end-line="303" selection-end-column="9" />
+            <state relative-caret-position="261">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
-                <element signature="method#move#0;class#Mover#0" />
                 <element signature="method#canMove#0;class#Mover#0" />
                 <element signature="method#fightCat#0;class#Mover#0" />
+                <element signature="method#canFightCat#0;class#Mover#0" />
+                <element signature="method#fight#0;class#Mover#0" />
+                <element signature="method#sightFight#0;class#Mover#0" />
+                <element signature="method#canFight#0;class#Mover#0" />
+                <element signature="method#win#0;class#Mover#0" />
+                <element signature="method#nomore#0;class#Mover#0" />
+                <element signature="method#mousePressed#0;class#Mover#0" />
+                <element signature="method#mouseReleased#0;class#Mover#0" />
+                <element signature="method#mouseEntered#0;class#Mover#0" />
+                <element signature="method#mouseExited#0;class#Mover#0" />
               </folding>
             </state>
           </provider>
@@ -35,20 +46,28 @@
       <file leaf-file-name="AI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
+            <state relative-caret-position="2446">
+              <caret line="218" column="55" selection-start-line="218" selection-start-column="55" selection-end-line="218" selection-end-column="55" />
               <folding>
                 <element signature="method#AI#0;class#AI#0" />
+                <element signature="method#canFightChees#0;class#AI#0" />
+                <element signature="method#canMoveChess#0;class#AI#0" />
+                <element signature="method#analizeBord#0;class#AI#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#367#368#0" expanded="true" />
+                <element signature="e#396#397#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,6 +111,7 @@
         <option value="$PROJECT_DIR$/src/com/company/GameJFrame.java" />
         <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Node.java" />
         <option value="$PROJECT_DIR$/src/com/company/AI.java" />
       </list>
     </option>
@@ -128,7 +148,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -152,33 +193,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Algorithm" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Algorithm" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="sight&#9;PSI&#9;JAVA://com.company.Mover#sightFight&#10;flag&#9;PSI&#9;JAVA://java.util.zip.ZipEntry#flag&#10;step&#9;PSI&#9;JAVA://com.company.Mover#step" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="flag&#9;PSI&#9;JAVA://java.util.zip.ZipEntry#flag&#10;step&#9;PSI&#9;JAVA://com.company.Mover#step" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -284,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524817233301</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add copy board, and begin analise">
+      <created>1527666388088</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1527666388088</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -314,6 +341,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49791667" weight="0.32855567" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" x="0" y="0" width="337" height="640" id="Documentation" order="8" side_tool="true" weight="0.3294271" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49791667" weight="0.3295964" />
@@ -363,12 +391,13 @@
     <MESSAGE value="проверка" />
     <MESSAGE value="IT'S ALIVEEE!!!!!!!" />
     <MESSAGE value="Find move chess" />
-    <option name="LAST_COMMIT_MESSAGE" value="Find move chess" />
+    <MESSAGE value="Add copy board, and begin analise" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add copy board, and begin analise" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="47" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -377,26 +406,15 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
           <folding>
             <element signature="method#AI#0;class#AI#0" />
+            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#canMoveChess#0;class#AI#0" />
+            <element signature="method#analizeBord#0;class#AI#0" />
           </folding>
         </state>
       </provider>
@@ -558,6 +576,22 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/MenuForm/Menu.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Menu.form" />
+    <entry file="file://$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#22642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/GameBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-308">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -565,38 +599,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GameBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="323">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="303" column="9" selection-start-line="303" selection-start-column="9" selection-end-line="303" selection-end-column="9" />
+        <state relative-caret-position="261">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
-            <element signature="method#move#0;class#Mover#0" />
             <element signature="method#canMove#0;class#Mover#0" />
             <element signature="method#fightCat#0;class#Mover#0" />
+            <element signature="method#canFightCat#0;class#Mover#0" />
+            <element signature="method#fight#0;class#Mover#0" />
+            <element signature="method#sightFight#0;class#Mover#0" />
+            <element signature="method#canFight#0;class#Mover#0" />
+            <element signature="method#win#0;class#Mover#0" />
+            <element signature="method#nomore#0;class#Mover#0" />
+            <element signature="method#mousePressed#0;class#Mover#0" />
+            <element signature="method#mouseReleased#0;class#Mover#0" />
+            <element signature="method#mouseEntered#0;class#Mover#0" />
+            <element signature="method#mouseExited#0;class#Mover#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
+        <state relative-caret-position="2446">
+          <caret line="218" column="55" selection-start-line="218" selection-start-column="55" selection-end-line="218" selection-end-column="55" />
           <folding>
             <element signature="method#AI#0;class#AI#0" />
+            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#canMoveChess#0;class#AI#0" />
+            <element signature="method#analizeBord#0;class#AI#0" />
           </folding>
         </state>
       </provider>
