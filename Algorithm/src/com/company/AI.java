@@ -148,13 +148,13 @@ public class AI {
                 mover.fightCat(arr, x, y, node.coord.x, node.coord.y);
             }
             node.position = buildTree(node, arr);
-
-
         }
+        return root;
     }
 
     public ArrayList<Node> buildTree(Node node, int[][] copyBoard) {
         ArrayList<Point> pos = new ArrayList<>();
+        ArrayList<Node> listNode = new ArrayList<>();
         if (copyBoard[node.coord.x][node.coord.y] < 0) {
             pos = mover.canFightCat(copyBoard, node.coord.x, node.coord.y, enemy);
         } else if (copyBoard[node.coord.x][node.coord.y] > 0) {
@@ -178,9 +178,9 @@ public class AI {
                         b--;
                     }
                     if (copyBoard[a - 1][b - 1] > 0) {
-                        node.addPosition(new Node(new Point(a - 1, b - 1), 1));
+                        listNode.add(new Node(new Point(a - 1, b - 1), 1));
                     } else if (copyBoard[a - 1][b - 1] < 0) {
-                        node.addPosition(new Node(new Point(a - 1, b - 1), 3));
+                        listNode.add(new Node(new Point(a - 1, b - 1), 3));
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y < 0) {
                     while (copyBoard[a + 1][b - 1] != Math.abs(enemy)) {
@@ -188,9 +188,9 @@ public class AI {
                         b--;
                     }
                     if (copyBoard[a + 1][b - 1] > 0) {
-                        node.addPosition(new Node(new Point(a + 1, b - 1), 1));
+                        listNode.add(new Node(new Point(a + 1, b - 1), 1));
                     } else if (copyBoard[a + 1][b - 1] < 0) {
-                        node.addPosition(new Node(new Point(a + 1, b - 1), 3));
+                        listNode.add(new Node(new Point(a + 1, b - 1), 3));
                     }
                 } else if (point.x - node.coord.x < 0 && point.y - node.coord.y > 0) {
                     while (copyBoard[a - 1][b + 1] != Math.abs(enemy)) {
@@ -198,9 +198,9 @@ public class AI {
                         b++;
                     }
                     if (copyBoard[a - 1][b + 1] > 0) {
-                        node.addPosition(new Node(new Point(a - 1, b + 1), 1));
+                        listNode.add(new Node(new Point(a - 1, b + 1), 1));
                     } else if (copyBoard[a - 1][b + 1] < 0) {
-                        node.addPosition(new Node(new Point(a - 1, b + 1), 3));
+                        listNode.add(new Node(new Point(a - 1, b + 1), 3));
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y > 0) {
                     while (copyBoard[a + 1][b + 1] != Math.abs(enemy)) {
@@ -208,16 +208,17 @@ public class AI {
                         b++;
                     }
                     if (copyBoard[a + 1][b + 1] > 0) {
-                        node.addPosition(new Node(new Point(a + 1, b + 1), 1));
+                        listNode.add(new Node(new Point(a + 1, b + 1), 1));
                     } else if (copyBoard[a - 1][b + 1] < 0) {
-                        node.addPosition(new Node(new Point(a + 1, b + 1), 3));
+                        listNode.add(new Node(new Point(a + 1, b + 1), 3));
                     }
                 }
             }
-            for (Node node1 : node.position) {
+            for (Node node1 : listNode) {
                 int[][] mas = copyBoard(copyBoard);
                 node1.position = buildTree(node1, mas);
             }
+            return listNode;
         }
         //
     }
