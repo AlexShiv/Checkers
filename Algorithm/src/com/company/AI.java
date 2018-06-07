@@ -453,6 +453,10 @@ public class AI {
                 mover.move(GameBoard.board, p.x, p.y, p.x - b, p.y + b);
                 return;
             }
-        } // Ход для обычной шашки, переделать ход дамки в рандомныфй скопировав условие
+        } else if (GameBoard.board[p.x][p.y] > 0) {
+            if (player == 1) {
+
+            }
+        }
     }
 }
