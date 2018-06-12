@@ -466,46 +466,82 @@ public class Mover implements MouseListener {
     @Override
     //нажал
     public void mousePressed(MouseEvent e) {
-        if (click == 1) {
-            fromY = e.getPoint().x / 100;
-            fromX = e.getPoint().y / 100;//100
-            click = 2;
-            System.out.println(fromX + " " + fromY);
-        } else if (click == 2) {
-            toY = e.getPoint().x / 100;
-            toX = e.getPoint().y / 100;
-            boolean other = true;
-            int kill = 0;
-            if (step == 1) {
-                kill = 2;
-            } else if (step == 2) {
-                kill = 1;
-            }
-            for (int i = 0; i < GameBoard.board.length; i++) {
-                for (int j = 0; j < GameBoard.board.length; j++) {
-                    if ((GameBoard.board[i][j] < 0) && (Math.abs(GameBoard.board[i][j]) == step) && (canFightCat(GameBoard.board, i, j, kill).size() != 0)) {
-                        other = false;
-                        break;
-                    }
+        if (mode == 1 || mode == 2) {
+            if (click == 1) {
+                fromY = e.getPoint().x / 100;
+                fromX = e.getPoint().y / 100;
+                click = 2;
+            } else if (click == 2) {
+                toY = e.getPoint().x / 100;
+                toX = e.getPoint().y / 100;
+                boolean other = true;
+                int kill = 0;
+                if (step == 1) {
+                    kill = 2;
+                } else if (step == 2) {
+                    kill = 1;
                 }
-                if (!other) break;
+                for (int i = 0; i < GameBoard.board.length; i++) {
+                    for (int j = 0; j < GameBoard.board.length; j++) {
+                        if ((GameBoard.board[i][j] < 0) && (Math.abs(GameBoard.board[i][j]) == step) && (canFightCat(GameBoard.board, i, j, kill).size() != 0)) {
+                            other = false;
+                            break;
+                        }
+                    }
+                    if (!other) break;
+                }
+                if ((GameBoard.board[fromX][fromY] > 0) && (Math.abs(fromX - toX) == 2) && (Math.abs(fromY - toY) == 2)) {
+                    fight(GameBoard.board, fromX, fromY, toX, toY);
+                    System.out.println();
+                    GameBoard.print();
+                } else {
+                    ArrayList<Point> fightArray = canFightCat(GameBoard.board, fromX, fromY, kill);
+                    if (GameBoard.board[fromX][fromY] < 0 && fightArray.size() != 0 && fightArray.contains(new Point(toX, toY))) {
+                        fightCat(GameBoard.board, fromX, fromY, toX, toY);
+                    } else if (other)
+                        move(GameBoard.board, fromX, fromY, toX, toY);
+                    else JOptionPane.showMessageDialog(null, "Вы обязанны бить");
+                }
+                GameJFrame.rebuildFrame(GameBoard.board);
+                click = 1;
+
+                // Проверка победы
+                if (!nomore(GameBoard.board, step)) {
+                    if (win(GameBoard.board, step)) {
+                        String player;
+                        if (step == 2) player = "белых";
+                        else player = "черных";
+                        JOptionPane.showMessageDialog(null, "Победа " + player);
+                        System.exit(0);
+                    }
+                } else {
+                    String player;
+                    if (step == 2) player = "белых";
+                    else player = "черных";
+                    JOptionPane.showMessageDialog(null, "Победа " + player);
+                    System.exit(0);
+                }
+                int[][] arr = GameBoard.board;
+                if (mode == 2 && step == white.getPlayer()) {
+                    white.analizeBord();
+                    changePlayer();
+                }
+                if (step != 2) {
+                    changePlayer();
+                }
+
+                GameJFrame.rebuildFrame(GameBoard.board);
             }
-            if ((GameBoard.board[fromX][fromY] > 0) && (Math.abs(fromX - toX) == 2) && (Math.abs(fromY - toY) == 2)) {
-                fight(GameBoard.board, fromX, fromY, toX, toY);
-                System.out.println();
-                GameBoard.print();
-            } else {
-                ArrayList<Point> fightArray = canFightCat(GameBoard.board, fromX, fromY, kill);
-                if (GameBoard.board[fromX][fromY] < 0 && fightArray.size() != 0 && fightArray.contains(new Point(toX, toY))) {
-                    fightCat(GameBoard.board, fromX, fromY, toX, toY);
-                } else if (other)
-                    move(GameBoard.board, fromX, fromY, toX, toY);
-                else JOptionPane.showMessageDialog(null, "Вы обязанны бить");
+        } else {
+            if (step == black.getPlayer()) {
+                black.analizeBord();
+                changePlayer();
+            }
+            if (step != 1) {
+                changePlayer();
             }
             GameJFrame.rebuildFrame(GameBoard.board);
-            click = 1;
 
-            // Проверка победы
             if (!nomore(GameBoard.board, step)) {
                 if (win(GameBoard.board, step)) {
                     String player;
@@ -521,16 +557,29 @@ public class Mover implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Победа " + player);
                 System.exit(0);
             }
-            int[][] arr = GameBoard.board;
-            if (mode == 2 && step == white.getPlayer()){
+            if (step == white.getPlayer()) {
                 white.analizeBord();
                 changePlayer();
             }
-            if (step != 2){
+            if (step != 2) {
                 changePlayer();
             }
-
             GameJFrame.rebuildFrame(GameBoard.board);
+            if (!nomore(GameBoard.board, step)) {
+                if (win(GameBoard.board, step)) {
+                    String player;
+                    if (step == 2) player = "белых";
+                    else player = "черных";
+                    JOptionPane.showMessageDialog(null, "Победа " + player);
+                    System.exit(0);
+                }
+            } else {
+                String player;
+                if (step == 2) player = "белых";
+                else player = "черных";
+                JOptionPane.showMessageDialog(null, "Победа " + player);
+                System.exit(0);
+            }
         }
     }
 

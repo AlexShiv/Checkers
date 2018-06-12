@@ -27,10 +27,6 @@ public class AI {
         len = 0;
     }
 
-    public int getEnemy() {
-        return enemy;
-    }
-
     public int getPlayer() {
         return player;
     }
@@ -81,6 +77,7 @@ public class AI {
         return boardCopy;
     }
 
+    // основной метод ИИ
     public void analizeBord() {
         ArrayList<Point> fight = canFightChees();
         if (fight.size() != 0) {
@@ -144,7 +141,7 @@ public class AI {
             // danger!!! index out of range
             if (point.x - x < 0 && point.y - y < 0) {
                 try {
-                    while (GameBoard.board[a - 1][b - 1] != Math.abs(enemy)) {
+                    while (Math.abs(GameBoard.board[a - 1][b - 1]) != enemy) {
                         a--;
                         b--;
                     }
@@ -158,7 +155,7 @@ public class AI {
                 }
             } else if (point.x - x > 0 && point.y - y < 0) {
                 try {
-                    while (GameBoard.board[a + 1][b - 1] != Math.abs(enemy)) {
+                    while (Math.abs(GameBoard.board[a + 1][b - 1]) != enemy) {
                         a++;
                         b--;
                     }
@@ -172,7 +169,7 @@ public class AI {
                 }
             } else if (point.x - x < 0 && point.y - y > 0) {
                 try {
-                    while (GameBoard.board[a - 1][b + 1] != Math.abs(enemy)) { // a - 1 >= 0 && a - 1 <= 7 && b + 1 >= 0 && b + 1 <= 7 &&
+                    while (Math.abs(GameBoard.board[a - 1][b + 1]) != enemy) { // a - 1 >= 0 && a - 1 <= 7 && b + 1 >= 0 && b + 1 <= 7 &&
                         a--;
                         b++;
                     }
@@ -186,7 +183,7 @@ public class AI {
                 }
             } else if (point.x - x > 0 && point.y - y > 0) {
                 try {
-                    while (GameBoard.board[a + 1][b + 1] != Math.abs(enemy)) {
+                    while (Math.abs(GameBoard.board[a + 1][b + 1]) != enemy) {
                         a++;
                         b++;
                     }
@@ -238,7 +235,7 @@ public class AI {
                 // danger!!! index out of range
                 if (point.x - node.coord.x < 0 && point.y - node.coord.y < 0) {
                     try {
-                        while (copyBoard[a - 1][b - 1] != Math.abs(enemy)) {
+                        while (Math.abs(copyBoard[a - 1][b - 1]) != enemy) {
                             a--;
                             b--;
                         }
@@ -252,7 +249,7 @@ public class AI {
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y < 0) {
                     try {
-                        while (copyBoard[a + 1][b - 1] != Math.abs(enemy)) {
+                        while (Math.abs(copyBoard[a + 1][b - 1]) != enemy) {
                             a++;
                             b--;
                         }
@@ -266,7 +263,7 @@ public class AI {
                     }
                 } else if (point.x - node.coord.x < 0 && point.y - node.coord.y > 0) {
                     try {
-                        while (copyBoard[a - 1][b + 1] != Math.abs(enemy)) {
+                        while (Math.abs(copyBoard[a - 1][b + 1]) != enemy) {
                             a--;
                             b++;
                         }
@@ -280,7 +277,7 @@ public class AI {
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y > 0) {
                     try {
-                        while (copyBoard[a + 1][b + 1] != Math.abs(enemy)) {
+                        while (Math.abs(copyBoard[a + 1][b + 1]) != enemy) {
                             a++;
                             b++;
                         }
@@ -351,6 +348,9 @@ public class AI {
                     dangerPos.addAll(mover.canFightCat(board, i, j, enemy));
                 }
             }
+        }
+        if (mover.step != player) {
+            mover.changePlayer();
         }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -469,8 +469,8 @@ public class AI {
 
                     }
                     try {
-                        if (mover.canMove(GameBoard.board, i, j, i - 1, j + 1) && !dangerPos.contains(new Point(i - 1, j + 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
-                            mover.move(GameBoard.board, i, j, i - 1, j + 1);
+                        if (mover.canMove(GameBoard.board, i, j, i + 1, j - 1) && !dangerPos.contains(new Point(i + 1, j - 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                            mover.move(GameBoard.board, i, j, i + 1, j - 1);
                             return;
                         }
                     } catch (Throwable ex) {
@@ -479,7 +479,7 @@ public class AI {
 
                 } else if (board[i][j] < 0) {
                     try {
-                        if (board[i + 1][j + 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && !dangerPos.contains(new Point(i + 1, j + 1))) {
+                        if (board[i + 1][j + 1] == 0 && !dangerPos.contains(new Point(i + 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j + 1);
                             return;
                         }
@@ -487,7 +487,7 @@ public class AI {
                         System.out.println("ai1");
                     }
                     try {
-                        if (board[i - 1][j - 1] == 0 && GameBoard.board[i - 2][j - 2] != enemy && !dangerPos.contains(new Point(i - 1, j - 1))) {
+                        if (board[i - 1][j - 1] == 0 && !dangerPos.contains(new Point(i - 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j - 1);
                             return;
                         }
@@ -495,7 +495,7 @@ public class AI {
                         System.out.println("ai2");
                     }
                     try {
-                        if (board[i + 1][j - 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && !dangerPos.contains(new Point(i + 1, j - 1))) {
+                        if (board[i + 1][j - 1] == 0 && !dangerPos.contains(new Point(i + 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j - 1);
                             return;
                         }
@@ -503,7 +503,7 @@ public class AI {
                         System.out.println("ai3");
                     }
                     try {
-                        if (board[i - 1][j + 1] == 0 && GameBoard.board[i - 2][j] != enemy && !dangerPos.contains(new Point(i - 1, j + 1))) {
+                        if (board[i - 1][j + 1] == 0 && !dangerPos.contains(new Point(i - 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j + 1);
                             return;
                         }
@@ -522,8 +522,8 @@ public class AI {
 
                     }
                     try {
-                        if (mover.canMove(GameBoard.board, i, j, i + 1, j - 1) && !dangerPos.contains(new Point(i + 1, j - 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
-                            mover.move(GameBoard.board, i, j, i + 1, j - 1);
+                        if (mover.canMove(GameBoard.board, i, j, i - 1, j + 1) && !dangerPos.contains(new Point(i - 1, j + 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                            mover.move(GameBoard.board, i, j, i - 1, j + 1);
                             return;
                         }
                     } catch (Throwable ex) {
