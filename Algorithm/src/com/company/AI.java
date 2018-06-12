@@ -454,15 +454,10 @@ public class AI {
             for (int j = 0; j < board[i].length; j++) {
                 if (posibleMove.contains(new Point(i, j))) {
                     if (player == 1) {
-                        if (board[i][j] > 0) {
+                        if (board[i][j] > 0 && board[i][j] == player) {
                             boolean flag = true;
                             try {
                                 if (board[i+2][j+2] == enemy) flag = false;
-                            } catch (ArrayIndexOutOfBoundsException ex) {
-                                System.out.println(":(");
-                            }
-                            try {
-                                if (board[i+2][j] == enemy) flag = false;
                             } catch (ArrayIndexOutOfBoundsException ex) {
                                 System.out.println(":(");
                             }
@@ -471,49 +466,63 @@ public class AI {
                             } catch (ArrayIndexOutOfBoundsException ex) {
                                 System.out.println(":(");
                             }
+                            try {
+                                if (board[i+2][j] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
+                            }
                             if (!flag) {
-                                dangerPos.add(new Point(i, j));
+                                dangerPos.add(new Point(i+1, j+1));
                             }
-                        } else if (board[i][j] < 0) {
-                            int a = i;
-                            int b = j;
-                            while (a+1 >= 0 && a+1 <=7 && b+1 >= 0 && b+1 <=7 && board[a+1][b+1] == 0) {
-                                dangerPos.add(new Point(a+1, b+1));
-                                a++;
-                                b++;
+                            flag = true;
+                            try {
+                                if (board[i+2][j-2] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
                             }
-                            a = i;
-                            b = j;
-                            while (a-1 >= 0 && a-1 <=7 && b-1 >= 0 && b-1 <=7 && board[a-1][b-1] == 0) {
-                                dangerPos.add(new Point(a-1, b-1));
-                                a--;
-                                b--;
+                            try {
+                                if (board[i][j-2] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
                             }
-                            a = i;
-                            b = j;
-                            while (a+1 >= 0 && a+1 <=7 && b-1 >= 0 && b-1 <=7 && board[a+1][b-1] == 0) {
-                                dangerPos.add(new Point(a+1, b-1));
-                                a++;
-                                b--;
+                            try {
+                                if (board[i+2][j] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
                             }
-                            a = i;
-                            b = j;
-                            while (a-1 >= 0 && a-1 <=7 && b+1 >= 0 && b+1 <=7 && board[a-1][b+1] == 0) {
-                                dangerPos.add(new Point(a-1, b+1));
-                                a--;
-                                b++;
+                            if (!flag) {
+                                dangerPos.add(new Point(i+1, j-1)); // оменять местами
                             }
                         }
                     } else if (player == 2) {
-                        if (board[i][j] > 0) {
+                        if (board[i][j] > 0 && board[i][j] == player) {
                             boolean flag = true;
                             try {
-                                if (board[i+2][j+2] == enemy) flag = false;
+                                if (board[i-2][j-2] == enemy) flag = false;
                             } catch (ArrayIndexOutOfBoundsException ex) {
                                 System.out.println(":(");
                             }
                             try {
-                                if (board[i+2][j] == enemy) flag = false;
+                                if (board[i][j-2] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
+                            }
+                            try {
+                                if (board[i-2][j] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
+                            }
+                            if (!flag) {
+                                dangerPos.add(new Point(i-1, j-1));
+                            }
+                            flag = true;
+                            try {
+                                if (board[i-2][j+2] == enemy) flag = false;
+                            } catch (ArrayIndexOutOfBoundsException ex) {
+                                System.out.println(":(");
+                            }
+                            try {
+                                if (board[i-2][j] == enemy) flag = false;
                             } catch (ArrayIndexOutOfBoundsException ex) {
                                 System.out.println(":(");
                             }
@@ -523,38 +532,39 @@ public class AI {
                                 System.out.println(":(");
                             }
                             if (!flag) {
-                                dangerPos.add(new Point(i, j));
-                            }
-                        } else if (board[i][j] < 0) {
-                            int a = i;
-                            int b = j;
-                            while (a+1 >= 0 && a+1 <=7 && b+1 >= 0 && b+1 <=7 && board[a+1][b+1] == 0) {
-                                dangerPos.add(new Point(a+1, b+1));
-                                a++;
-                                b++;
-                            }
-                            a = i;
-                            b = j;
-                            while (a-1 >= 0 && a-1 <=7 && b-1 >= 0 && b-1 <=7 && board[a-1][b-1] == 0) {
-                                dangerPos.add(new Point(a-1, b-1));
-                                a--;
-                                b--;
-                            }
-                            a = i;
-                            b = j;
-                            while (a+1 >= 0 && a+1 <=7 && b-1 >= 0 && b-1 <=7 && board[a+1][b-1] == 0) {
-                                dangerPos.add(new Point(a+1, b-1));
-                                a++;
-                                b--;
-                            }
-                            a = i;
-                            b = j;
-                            while (a-1 >= 0 && a-1 <=7 && b+1 >= 0 && b+1 <=7 && board[a-1][b+1] == 0) {
-                                dangerPos.add(new Point(a-1, b+1));
-                                a--;
-                                b++;
+                                dangerPos.add(new Point(i-1, j+1));
                             }
                         }
+                    }
+                }
+                if (board[i][j] < 0 && Math.abs(board[i][j]) == enemy) {
+                    int a = i;
+                    int b = j;
+                    while (a+1 >= 0 && a+1 <=7 && b+1 >= 0 && b+1 <=7 && board[a+1][b+1] == 0) {
+                        dangerPos.add(new Point(a+1, b+1));
+                        a++;
+                        b++;
+                    }
+                    a = i;
+                    b = j;
+                    while (a-1 >= 0 && a-1 <=7 && b-1 >= 0 && b-1 <=7 && board[a-1][b-1] == 0) {
+                        dangerPos.add(new Point(a-1, b-1));
+                        a--;
+                        b--;
+                    }
+                    a = i;
+                    b = j;
+                    while (a+1 >= 0 && a+1 <=7 && b-1 >= 0 && b-1 <=7 && board[a+1][b-1] == 0) {
+                        dangerPos.add(new Point(a+1, b-1));
+                        a++;
+                        b--;
+                    }
+                    a = i;
+                    b = j;
+                    while (a-1 >= 0 && a-1 <=7 && b+1 >= 0 && b+1 <=7 && board[a-1][b+1] == 0) {
+                        dangerPos.add(new Point(a-1, b+1));
+                        a--;
+                        b++;
                     }
                 }
             }

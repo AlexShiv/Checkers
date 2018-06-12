@@ -6,7 +6,10 @@
     </list>
     <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="fix fight, but still cat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/AI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Menu.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +24,8 @@
       <file leaf-file-name="Mover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="339" selection-start-line="339" selection-end-line="339" />
+            <state relative-caret-position="91">
+              <caret line="537" selection-start-line="537" selection-end-line="537" />
               <folding>
                 <element signature="method#fightCat#0;class#Mover#0" />
                 <element signature="method#canFightCat#0;class#Mover#0" />
@@ -48,35 +51,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" selection-start-column="20" selection-end-column="20" />
+            <state relative-caret-position="314">
+              <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="556" column="25" selection-start-line="556" selection-start-column="25" selection-end-line="556" selection-end-column="25" />
+            <state relative-caret-position="178">
+              <caret line="493" column="63" selection-start-line="493" selection-start-column="63" selection-end-line="493" selection-end-column="63" />
               <folding>
                 <element signature="method#AI#0;class#AI#0" />
                 <element signature="method#canFightChees#0;class#AI#0" />
                 <element signature="method#canMoveChess#0;class#AI#0" />
                 <element signature="method#copyBoard#0;class#AI#0" />
-                <element signature="method#analizeBord#0;class#AI#0" />
                 <element signature="method#buildTree#0;class#AI#0" />
                 <element signature="method#buildTree#1;class#AI#0" />
                 <element signature="method#calcValue#0;class#AI#0" />
-                <marker date="1528821817682" expanded="false" signature="14125:16367" ph="{...}" />
-                <marker date="1528821817682" expanded="false" signature="16390:18632" ph="{...}" />
-                <marker date="1528821817682" expanded="false" signature="24202:26756" ph="{...}" />
-                <marker date="1528821817682" expanded="false" signature="26779:29332" ph="{...}" />
-                <marker date="1528821817682" expanded="false" signature="29484:31062" ph="{...}" />
-                <marker date="1528821817682" expanded="false" signature="31103:32692" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="14125:16367" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="16390:18632" ph="{...}" />
+                <marker date="1528837828405" expanded="true" signature="18923:21055" ph="{...}" />
+                <marker date="1528837828405" expanded="true" signature="21078:23191" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="23281:24472" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="24626:27180" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="27203:29756" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="29908:31486" ph="{...}" />
+                <marker date="1528837828405" expanded="false" signature="31527:33116" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -85,8 +90,8 @@
       <file leaf-file-name="GameJFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+            <state relative-caret-position="125">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -147,17 +152,16 @@
         <option value="$PROJECT_DIR$/src/com/company/Menu.form" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Node.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/Mover.java" />
         <option value="$PROJECT_DIR$/src/com/company/GameJFrame.java" />
         <option value="$PROJECT_DIR$/src/com/company/AI.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1005" />
-    <option name="width" value="915" />
-    <option name="height" value="1035" />
+    <option name="width" value="864" />
+    <option name="height" value="1033" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -407,17 +411,17 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.56640625" side_tool="true" weight="0.25584593" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.43359375" visible="true" weight="0.25584593" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.43359375" visible="true" weight="0.24896836" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.6609375" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49934897" weight="0.3287483" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1295573" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26392573" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.74635416" weight="0.39752406" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.74635416" weight="0.40532959" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -490,17 +494,11 @@
           <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Mover.java</url>
-          <line>535</line>
-          <properties />
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="102" />
+      <option name="time" value="107" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -714,24 +712,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        <state relative-caret-position="125">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+        <state relative-caret-position="178">
+          <caret line="493" column="63" selection-start-line="493" selection-start-column="63" selection-end-line="493" selection-end-column="63" />
+          <folding>
+            <element signature="method#AI#0;class#AI#0" />
+            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#canMoveChess#0;class#AI#0" />
+            <element signature="method#copyBoard#0;class#AI#0" />
+            <element signature="method#buildTree#0;class#AI#0" />
+            <element signature="method#buildTree#1;class#AI#0" />
+            <element signature="method#calcValue#0;class#AI#0" />
+            <marker date="1528837828405" expanded="false" signature="14125:16367" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="16390:18632" ph="{...}" />
+            <marker date="1528837828405" expanded="true" signature="18923:21055" ph="{...}" />
+            <marker date="1528837828405" expanded="true" signature="21078:23191" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="23281:24472" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="24626:27180" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="27203:29756" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="29908:31486" ph="{...}" />
+            <marker date="1528837828405" expanded="false" signature="31527:33116" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        <state relative-caret-position="91">
+          <caret line="537" selection-start-line="537" selection-end-line="537" />
           <folding>
             <element signature="method#fightCat#0;class#Mover#0" />
             <element signature="method#canFightCat#0;class#Mover#0" />
@@ -747,26 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="556" column="25" selection-start-line="556" selection-start-column="25" selection-end-line="556" selection-end-column="25" />
-          <folding>
-            <element signature="method#AI#0;class#AI#0" />
-            <element signature="method#canFightChees#0;class#AI#0" />
-            <element signature="method#canMoveChess#0;class#AI#0" />
-            <element signature="method#copyBoard#0;class#AI#0" />
-            <element signature="method#analizeBord#0;class#AI#0" />
-            <element signature="method#buildTree#0;class#AI#0" />
-            <element signature="method#buildTree#1;class#AI#0" />
-            <element signature="method#calcValue#0;class#AI#0" />
-            <marker date="1528821817682" expanded="false" signature="14125:16367" ph="{...}" />
-            <marker date="1528821817682" expanded="false" signature="16390:18632" ph="{...}" />
-            <marker date="1528821817682" expanded="false" signature="24202:26756" ph="{...}" />
-            <marker date="1528821817682" expanded="false" signature="26779:29332" ph="{...}" />
-            <marker date="1528821817682" expanded="false" signature="29484:31062" ph="{...}" />
-            <marker date="1528821817682" expanded="false" signature="31103:32692" ph="{...}" />
-          </folding>
+        <state relative-caret-position="314">
+          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
         </state>
       </provider>
     </entry>
