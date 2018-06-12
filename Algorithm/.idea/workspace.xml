@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Mover.java" afterDir="false" />
-    </list>
     <list id="64920705-a5d2-4110-9ca8-8140977de9c5" name="проверка" comment="проверка&#10;&#10;(cherry picked from commit 873f3f6)">
       <changelist_data name="Aleksey Shiyanov" email="shiyanov1998@mail.ru" date="1520878687000" />
+    </list>
+    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="fix fight, but still cat">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,10 +18,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Mover.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Mover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
+            <state relative-caret-position="623">
               <caret line="339" selection-start-line="339" selection-end-line="339" />
               <folding>
                 <element signature="method#fightCat#0;class#Mover#0" />
@@ -60,19 +57,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="342" selection-start-line="342" selection-end-line="342" />
+            <state relative-caret-position="765">
+              <caret line="556" column="25" selection-start-line="556" selection-start-column="25" selection-end-line="556" selection-end-column="25" />
               <folding>
                 <element signature="method#AI#0;class#AI#0" />
-                <element signature="e#1048#1049#0" expanded="true" />
-                <element signature="e#1077#1078#0" expanded="true" />
+                <element signature="method#canFightChees#0;class#AI#0" />
+                <element signature="method#canMoveChess#0;class#AI#0" />
                 <element signature="method#copyBoard#0;class#AI#0" />
+                <element signature="method#analizeBord#0;class#AI#0" />
                 <element signature="method#buildTree#0;class#AI#0" />
                 <element signature="method#buildTree#1;class#AI#0" />
                 <element signature="method#calcValue#0;class#AI#0" />
+                <marker date="1528821817682" expanded="false" signature="14125:16367" ph="{...}" />
+                <marker date="1528821817682" expanded="false" signature="16390:18632" ph="{...}" />
+                <marker date="1528821817682" expanded="false" signature="24202:26756" ph="{...}" />
+                <marker date="1528821817682" expanded="false" signature="26779:29332" ph="{...}" />
+                <marker date="1528821817682" expanded="false" signature="29484:31062" ph="{...}" />
+                <marker date="1528821817682" expanded="false" signature="31103:32692" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -145,12 +149,12 @@
         <option value="$PROJECT_DIR$/src/com/company/Node.java" />
         <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/Mover.java" />
-        <option value="$PROJECT_DIR$/src/com/company/AI.java" />
         <option value="$PROJECT_DIR$/src/com/company/GameJFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/company/AI.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1005" />
     <option name="width" value="915" />
     <option name="height" value="1035" />
@@ -487,28 +491,16 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
-          <line>368</line>
-          <properties />
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/Mover.java</url>
           <line>535</line>
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
-          <line>342</line>
-          <properties />
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="101" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -736,25 +728,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="342" selection-start-line="342" selection-end-line="342" />
-          <folding>
-            <element signature="method#AI#0;class#AI#0" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1077#1078#0" expanded="true" />
-            <element signature="method#copyBoard#0;class#AI#0" />
-            <element signature="method#buildTree#0;class#AI#0" />
-            <element signature="method#buildTree#1;class#AI#0" />
-            <element signature="method#calcValue#0;class#AI#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
+        <state relative-caret-position="623">
           <caret line="339" selection-start-line="339" selection-end-line="339" />
           <folding>
             <element signature="method#fightCat#0;class#Mover#0" />
@@ -767,6 +743,29 @@
             <element signature="method#mouseReleased#0;class#Mover#0" />
             <element signature="method#mouseEntered#0;class#Mover#0" />
             <element signature="method#mouseExited#0;class#Mover#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="556" column="25" selection-start-line="556" selection-start-column="25" selection-end-line="556" selection-end-column="25" />
+          <folding>
+            <element signature="method#AI#0;class#AI#0" />
+            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#canMoveChess#0;class#AI#0" />
+            <element signature="method#copyBoard#0;class#AI#0" />
+            <element signature="method#analizeBord#0;class#AI#0" />
+            <element signature="method#buildTree#0;class#AI#0" />
+            <element signature="method#buildTree#1;class#AI#0" />
+            <element signature="method#calcValue#0;class#AI#0" />
+            <marker date="1528821817682" expanded="false" signature="14125:16367" ph="{...}" />
+            <marker date="1528821817682" expanded="false" signature="16390:18632" ph="{...}" />
+            <marker date="1528821817682" expanded="false" signature="24202:26756" ph="{...}" />
+            <marker date="1528821817682" expanded="false" signature="26779:29332" ph="{...}" />
+            <marker date="1528821817682" expanded="false" signature="29484:31062" ph="{...}" />
+            <marker date="1528821817682" expanded="false" signature="31103:32692" ph="{...}" />
           </folding>
         </state>
       </provider>
