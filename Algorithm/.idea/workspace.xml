@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list id="64920705-a5d2-4110-9ca8-8140977de9c5" name="проверка" comment="проверка&#10;&#10;(cherry picked from commit 873f3f6)">
-      <changelist_data name="Aleksey Shiyanov" email="shiyanov1998@mail.ru" date="1520878687000" />
-    </list>
     <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Mover.java" afterDir="false" />
+    </list>
+    <list id="64920705-a5d2-4110-9ca8-8140977de9c5" name="проверка" comment="проверка&#10;&#10;(cherry picked from commit 873f3f6)">
+      <changelist_data name="Aleksey Shiyanov" email="shiyanov1998@mail.ru" date="1520878687000" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,21 +24,16 @@
       <file leaf-file-name="Mover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="468" column="34" selection-start-line="468" selection-start-column="34" selection-end-line="468" selection-end-column="34" />
+            <state relative-caret-position="341">
+              <caret line="529" column="31" selection-start-line="529" selection-start-column="31" selection-end-line="529" selection-end-column="31" />
               <folding>
                 <element signature="method#move#0;class#Mover#0" />
+                <element signature="method#canMove#0;class#Mover#0" />
                 <element signature="method#fightCat#0;class#Mover#0" />
                 <element signature="method#canFightCat#0;class#Mover#0" />
-                <element signature="method#fight#0;class#Mover#0" />
-                <element signature="method#sightFight#0;class#Mover#0" />
-                <element signature="method#canFight#0;class#Mover#0" />
                 <element signature="method#win#0;class#Mover#0" />
                 <element signature="method#nomore#0;class#Mover#0" />
-                <element signature="method#mousePressed#0;class#Mover#0" />
-                <element signature="method#mouseReleased#0;class#Mover#0" />
-                <element signature="method#mouseEntered#0;class#Mover#0" />
-                <element signature="method#mouseExited#0;class#Mover#0" />
+                <element signature="method#mouseClicked#0;class#Mover#0" />
               </folding>
             </state>
           </provider>
@@ -50,19 +48,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="457" lean-forward="true" selection-start-line="457" selection-end-line="457" />
+            <state relative-caret-position="748">
+              <caret line="173" column="21" lean-forward="true" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
               <folding>
-                <element signature="method#canFightChees#0;class#AI#0" />
+                <element signature="method#AI#0;class#AI#0" />
                 <element signature="method#canMoveChess#0;class#AI#0" />
-                <element signature="method#copyBoard#0;class#AI#0" />
-                <element signature="method#analizeBord#0;class#AI#0" />
-                <element signature="method#buildTree#0;class#AI#0" />
                 <element signature="method#buildTree#1;class#AI#0" />
-                <element signature="method#calcValue#0;class#AI#0" />
               </folding>
             </state>
           </provider>
@@ -71,8 +74,8 @@
       <file leaf-file-name="GameJFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+            <state relative-caret-position="799">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -80,10 +83,12 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+            <state relative-caret-position="187">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#426#427#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,24 +124,24 @@
         <option value="$PROJECT_DIR$/src/com/company/GameApplet.java" />
         <option value="$PROJECT_DIR$/src/com/company/Moover.java" />
         <option value="$PROJECT_DIR$/src/com/company/Cell.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Mover.java" />
         <option value="$PROJECT_DIR$/src/com/company/GameBoard.java" />
         <option value="$PROJECT_DIR$/src/com/company/MenuForm/Menu.fxml" />
         <option value="$PROJECT_DIR$/src/com/company/MenuForm/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/MainForm.java" />
         <option value="$PROJECT_DIR$/src/com/company/Menu.form" />
         <option value="$PROJECT_DIR$/src/com/company/GameJFrame.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Node.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Mover.java" />
         <option value="$PROJECT_DIR$/src/com/company/AI.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1034" />
+    <option name="x" value="1005" />
+    <option name="width" value="915" />
+    <option name="height" value="1035" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -189,6 +194,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -211,11 +217,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="sight&#9;PSI&#9;JAVA://com.company.Mover#sightFight&#10;flag&#9;PSI&#9;JAVA://java.util.zip.ZipEntry#flag&#10;step&#9;PSI&#9;JAVA://com.company.Mover#step" />
+    <property name="SearchEverywhereHistoryKey" value="changePl&#9;PSI&#9;JAVA://com.company.Mover#changePlayer&#10;Mov&#9;FILE&#9;file://C:/Users/alexey/Desktop/АГУ/GitHub/Checkers/Algorithm/src/com/company/Mover.java&#10;sight&#9;PSI&#9;JAVA://com.company.Mover#sightFight&#10;flag&#9;PSI&#9;JAVA://java.util.zip.ZipEntry#flag&#10;step&#9;PSI&#9;JAVA://com.company.Mover#step" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -350,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528188998039</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="nothing interesting">
+      <created>1528391234532</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1528391234532</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -359,26 +371,26 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49739584" weight="0.32737276" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3390625" side_tool="true" visible="true" weight="0.3287483" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5657552" side_tool="true" weight="0.25584593" />
       <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.43424478" visible="true" weight="0.25584593" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.6609375" weight="0.3296582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.43541667" weight="0.25689086" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3296582" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49934897" weight="0.3287483" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12109375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08919271" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.74635416" weight="0.39752406" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.74635416" weight="0.39801544" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49791667" weight="0.32855567" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" x="0" y="0" width="337" height="640" id="Documentation" order="8" side_tool="true" weight="0.3294271" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -434,18 +446,44 @@
     <MESSAGE value="Add fight recursive analize and build tree" />
     <MESSAGE value="Some change in build algorithm" />
     <MESSAGE value="add bad move" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bad move" />
+    <MESSAGE value="nothing interesting" />
+    <option name="LAST_COMMIT_MESSAGE" value="nothing interesting" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="50" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
+          <line>127</line>
+          <properties />
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="97" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="((Moover)this).fromY" custom="com.company.Moover" />
+        <watch expression="((Moover)this).fromY" language="JAVA" custom="com.company.Moover" />
+        <watch expression="((Moover)this).fromY" language="JAVA" custom="com.company.Moover" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>((Moover)this).fromY</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>com.company.Moover</custom-info>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/company/GameBoard.java">
@@ -596,7 +634,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/MenuForm/Menu.fxml" />
     <entry file="file://$PROJECT_DIR$/src/com/company/MainForm.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/MenuForm/Menu.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/Menu.form" />
     <entry file="file://$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class">
       <provider selected="true" editor-type-id="text-editor" />
@@ -605,16 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-308">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -632,6 +659,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -639,47 +673,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="468" column="34" selection-start-line="468" selection-start-column="34" selection-end-line="468" selection-end-column="34" />
+        <state relative-caret-position="187">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="method#move#0;class#Mover#0" />
-            <element signature="method#fightCat#0;class#Mover#0" />
-            <element signature="method#canFightCat#0;class#Mover#0" />
-            <element signature="method#fight#0;class#Mover#0" />
-            <element signature="method#sightFight#0;class#Mover#0" />
-            <element signature="method#canFight#0;class#Mover#0" />
-            <element signature="method#win#0;class#Mover#0" />
-            <element signature="method#nomore#0;class#Mover#0" />
-            <element signature="method#mousePressed#0;class#Mover#0" />
-            <element signature="method#mouseReleased#0;class#Mover#0" />
-            <element signature="method#mouseEntered#0;class#Mover#0" />
-            <element signature="method#mouseExited#0;class#Mover#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state relative-caret-position="341">
+          <caret line="529" column="31" selection-start-line="529" selection-start-column="31" selection-end-line="529" selection-end-column="31" />
+          <folding>
+            <element signature="method#move#0;class#Mover#0" />
+            <element signature="method#canMove#0;class#Mover#0" />
+            <element signature="method#fightCat#0;class#Mover#0" />
+            <element signature="method#canFightCat#0;class#Mover#0" />
+            <element signature="method#win#0;class#Mover#0" />
+            <element signature="method#nomore#0;class#Mover#0" />
+            <element signature="method#mouseClicked#0;class#Mover#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="457" lean-forward="true" selection-start-line="457" selection-end-line="457" />
+        <state relative-caret-position="748">
+          <caret line="173" column="21" lean-forward="true" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
           <folding>
-            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#AI#0;class#AI#0" />
             <element signature="method#canMoveChess#0;class#AI#0" />
-            <element signature="method#copyBoard#0;class#AI#0" />
-            <element signature="method#analizeBord#0;class#AI#0" />
-            <element signature="method#buildTree#0;class#AI#0" />
             <element signature="method#buildTree#1;class#AI#0" />
-            <element signature="method#calcValue#0;class#AI#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
         </state>
       </provider>
     </entry>

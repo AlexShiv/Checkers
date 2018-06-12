@@ -11,6 +11,9 @@ public class Mover implements MouseListener {
     public int step = 2;//Изменить на 2!!!
     private int click = 1;
     private int fromX, fromY, toX, toY;
+    private AI white = new AI(1, this);
+    private AI black = new AI(2, this);
+    public static int mode;
 
     public void move(int[][] a, int x1, int y1, int x2, int y2) {
         //Проверка на битье дамки
@@ -35,11 +38,7 @@ public class Mover implements MouseListener {
             if (canMove(a, x1, y1, x2, y2)) {
                 a[x2][y2] = a[x1][y1];
                 a[x1][y1] = 0;
-                if (step == 1) {
-                    step = 2;
-                } else if (step == 2) {
-                    step = 1;
-                }
+                changePlayer();
                 GameJFrame.setTitle(step);
                 if (a[x2][y2] == 1 && x2 == 7) {
                     a[x2][y2] = -1;
@@ -145,11 +144,7 @@ public class Mover implements MouseListener {
             JOptionPane.showMessageDialog(null, "Вы обязаны бить!");
         } else {
             if (canFightCat(a, x2, y2, kill).size() == 0) {
-                if (step == 1) {
-                    step = 2;
-                } else if (step == 2) {
-                    step = 1;
-                }
+                changePlayer();
                 GameJFrame.setTitle(step);
             }
         }
@@ -159,7 +154,7 @@ public class Mover implements MouseListener {
         ArrayList<Point> points = new ArrayList<>();
         int i, flag = 0;
         try {
-            for (i = 1, i = 1; x1 - i != -1 && y1 - i != -1; i++) {
+            for (i = 1; x1 - i != -1 && y1 - i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 - i][y1 - i]) == kill && a[x1 - i - 1][y1 - i - 1] == 0) {
                     points.add(new Point(x1 - i - 1, y1 - i - 1));
                     flag = 1;
@@ -175,7 +170,7 @@ public class Mover implements MouseListener {
         }
         flag = 0;
         try {
-            for (i = 1, i = 1; x1 - i != -1 && y1 + i != 8; i++) {
+            for (i = 1; x1 - i != -1 && y1 + i != 8; i++) {
                 if (flag == 0 && Math.abs(a[x1 - i][y1 + i]) == kill && a[x1 - i - 1][y1 + i + 1] == 0) {
                     points.add(new Point(x1 - i - 1, y1 + i + 1));
                     flag = 1;
@@ -191,7 +186,7 @@ public class Mover implements MouseListener {
         }
         flag = 0;
         try {
-            for (i = 1, i = 1; x1 + i != 8 && y1 - i != -1; i++) {
+            for (i = 1; x1 + i != 8 && y1 - i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 + i][y1 - i]) == kill && a[x1 + i + 1][y1 - i - 1] == 0) {
                     points.add(new Point(x1 + i + 1, y1 - i - 1));
                     flag = 1;
@@ -207,7 +202,7 @@ public class Mover implements MouseListener {
         }
         flag = 0;
         try {
-            for (i = 1, i = 1; x1 + i != 8 && y1 + i != -1; i++) {
+            for (i = 1; x1 + i != 8 && y1 + i != -1; i++) {
                 if (flag == 0 && Math.abs(a[x1 + i][y1 + i]) == kill && a[x1 + i + 1][y1 + i + 1] == 0) {
                     points.add(new Point(x1 + i + 1, y1 + i + 1));
                     flag = 1;
@@ -263,14 +258,18 @@ public class Mover implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Вы обязаны бить!");
             } else if (!canFight(a).contains(to)) {//если добили, меняем шаг
                 if ((a[x2][y2] > 0) || (canFightCat(a, to.x, to.y, kill).size() == 0)) {
-                    if (step == 1) {
-                        step = 2;
-                    } else if (step == 2) {
-                        step = 1;
-                    }
+                    changePlayer();
                     GameJFrame.setTitle(step);
                 }
             }
+        }
+    }
+
+    public void changePlayer(){
+        if (step == 1) {
+            step = 2;
+        } else if (step == 2) {
+            step = 1;
         }
     }
 
@@ -468,12 +467,13 @@ public class Mover implements MouseListener {
     //нажал
     public void mousePressed(MouseEvent e) {
         if (click == 1) {
-            fromY = e.getXOnScreen() / 100;
-            fromX = e.getYOnScreen() / 100;
+            fromY = e.getPoint().x / 100;
+            fromX = e.getPoint().y / 100;//100
             click = 2;
+            System.out.println(fromX + " " + fromY);
         } else if (click == 2) {
-            toY = e.getXOnScreen() / 100;
-            toX = e.getYOnScreen() / 100;
+            toY = e.getPoint().x / 100;
+            toX = e.getPoint().y / 100;
             boolean other = true;
             int kill = 0;
             if (step == 1) {
@@ -521,6 +521,16 @@ public class Mover implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Победа " + player);
                 System.exit(0);
             }
+            int[][] arr = GameBoard.board;
+            if (mode == 2 && step == white.getPlayer()){
+                white.analizeBord();
+                changePlayer();
+            }
+            if (step != 2){
+                changePlayer();
+            }
+
+            GameJFrame.rebuildFrame(GameBoard.board);
         }
     }
 

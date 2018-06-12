@@ -12,19 +12,27 @@ public class AI {
 
     private int enemy;
     private int player;
-    private ArrayList<Point> listMoves;
-    private ArrayList<Point> comparelistMoves;
+    private ArrayList<Point> listMoves; // список позиций в которые последовательно необходимо совершать ходы
+    private ArrayList<Point> comparelistMoves; // список для сравнения с оригиналом
     private int len;
     private Mover mover;
 
-    public AI(int player) {
+    public AI(int player, Mover mover) {
         this.player = player;
         if (player == 1) enemy = 2;
         else if (player == 2) enemy = 1;
-        mover = new Mover();
+        this.mover = mover;
         listMoves = new ArrayList<>();
         comparelistMoves = new ArrayList<>();
         len = 0;
+    }
+
+    public int getEnemy() {
+        return enemy;
+    }
+
+    public int getPlayer() {
+        return player;
     }
 
     public ArrayList<Point> canFightChees() {
@@ -66,6 +74,9 @@ public class AI {
         int[][] boardCopy = new int[cop.length][cop.length];
         for (int i = 0; i < cop.length; i++) {
             boardCopy[i] = cop[i].clone();
+            /*for (int j = 0; j < cop.length; j++) {
+                boardCopy[i][j] = cop[i][j];
+            }*/
         }
         return boardCopy;
     }
@@ -74,13 +85,43 @@ public class AI {
         ArrayList<Point> fight = canFightChees();
         if (fight.size() != 0) {
             // если есть кому бить, анализируем те фигуры
-            int x = -1;
-            int y = -1;
-            int count = 0;
+            Node root;
+            Point begin;
+            for (Point fighter : fight) {
+                root = buildTree(fighter.x, fighter.y);
+                if (root.position == null || root.position.size() == 0) {
+                    continue;
+                }
+                calcValue(root, root, 0);
+            }
+            len = 0;
 
+            for (int i = 0; i < listMoves.size() - 1; i++) {
+                begin = listMoves.get(i);
+                Point to = listMoves.get(i + 1);
+                if (GameBoard.board[begin.x][begin.y] > 0) {
+                    mover.fight(GameBoard.board, begin.x, begin.y, to.x, to.y);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else if (GameBoard.board[begin.x][begin.y] < 0) {
+                    mover.fightCat(GameBoard.board, begin.x, begin.y, to.x, to.y);
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                GameJFrame.rebuildFrame(GameBoard.board);
+            }
         } else {
             // ... иначе ходим
+            moveAI(GameBoard.board);
+            GameJFrame.rebuildFrame(GameBoard.board);
         }
+        //mover.changePlayer();
     }
 
     public Node buildTree(int x, int y) {
@@ -102,44 +143,60 @@ public class AI {
 
             // danger!!! index out of range
             if (point.x - x < 0 && point.y - y < 0) {
-                while (GameBoard.board[a - 1][b - 1] != Math.abs(enemy)) {
-                    a--;
-                    b--;
-                }
-                if (GameBoard.board[a - 1][b - 1] > 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 1, root));
-                } else if (GameBoard.board[a - 1][b - 1] < 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                try {
+                    while (GameBoard.board[a - 1][b - 1] != Math.abs(enemy)) {
+                        a--;
+                        b--;
+                    }
+                    if (GameBoard.board[a - 1][b - 1] > 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 1, root));
+                    } else if (GameBoard.board[a - 1][b - 1] < 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("error");
                 }
             } else if (point.x - x > 0 && point.y - y < 0) {
-                while (GameBoard.board[a + 1][b - 1] != Math.abs(enemy)) {
-                    a++;
-                    b--;
-                }
-                if (GameBoard.board[a + 1][b - 1] > 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 1, root));
-                } else if (GameBoard.board[a + 1][b - 1] < 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                try {
+                    while (GameBoard.board[a + 1][b - 1] != Math.abs(enemy)) {
+                        a++;
+                        b--;
+                    }
+                    if (GameBoard.board[a + 1][b - 1] > 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 1, root));
+                    } else if (GameBoard.board[a + 1][b - 1] < 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("error");
                 }
             } else if (point.x - x < 0 && point.y - y > 0) {
-                while (GameBoard.board[a - 1][b + 1] != Math.abs(enemy)) {
-                    a--;
-                    b++;
-                }
-                if (GameBoard.board[a - 1][b + 1] > 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 1, root));
-                } else if (GameBoard.board[a - 1][b + 1] < 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                try {
+                    while (GameBoard.board[a - 1][b + 1] != Math.abs(enemy)) { // a - 1 >= 0 && a - 1 <= 7 && b + 1 >= 0 && b + 1 <= 7 &&
+                        a--;
+                        b++;
+                    }
+                    if (GameBoard.board[a - 1][b + 1] > 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 1, root));
+                    } else if (GameBoard.board[a - 1][b + 1] < 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("error");
                 }
             } else if (point.x - x > 0 && point.y - y > 0) {
-                while (GameBoard.board[a + 1][b + 1] != Math.abs(enemy)) {
-                    a++;
-                    b++;
-                }
-                if (GameBoard.board[a + 1][b + 1] > 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 1, root));
-                } else if (GameBoard.board[a - 1][b + 1] < 0) {
-                    root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                try {
+                    while (GameBoard.board[a + 1][b + 1] != Math.abs(enemy)) {
+                        a++;
+                        b++;
+                    }
+                    if (GameBoard.board[a + 1][b + 1] > 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 1, root));
+                    } else if (GameBoard.board[a - 1][b + 1] < 0) {
+                        root.addPosition(new Node(new Point(point.x, point.y), 3, root));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("error");
                 }
             }
         }
@@ -150,12 +207,16 @@ public class AI {
             } else if (arr[x][y] < 0) {
                 mover.fightCat(arr, x, y, node.coord.x, node.coord.y);
             }
+            if (mover.step != player) {
+                mover.changePlayer();
+            }
             node.position = buildTree(node, arr);
         }
+
         return root;
     }
 
-    public ArrayList<Node> buildTree(Node node, int[][] copyBoard) {
+    private ArrayList<Node> buildTree(Node node, int[][] copyBoard) {
         ArrayList<Point> pos = new ArrayList<>();
         ArrayList<Node> listNode = new ArrayList<>();
         if (copyBoard[node.coord.x][node.coord.y] < 0) {
@@ -171,54 +232,80 @@ public class AI {
         if (pos.size() == 0) return null;
         else {
             for (Point point : pos) {
-                int a = point.x;
-                int b = point.y;
+                int a = node.coord.x;
+                int b = node.coord.y;
 
                 // danger!!! index out of range
                 if (point.x - node.coord.x < 0 && point.y - node.coord.y < 0) {
-                    while (copyBoard[a - 1][b - 1] != Math.abs(enemy)) {
-                        a--;
-                        b--;
-                    }
-                    if (copyBoard[a - 1][b - 1] > 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 1, node));
-                    } else if (copyBoard[a - 1][b - 1] < 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                    try {
+                        while (copyBoard[a - 1][b - 1] != Math.abs(enemy)) {
+                            a--;
+                            b--;
+                        }
+                        if (copyBoard[a - 1][b - 1] > 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 1, node));
+                        } else if (copyBoard[a - 1][b - 1] < 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                        }
+                    } catch (Throwable ex) {
+
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y < 0) {
-                    while (copyBoard[a + 1][b - 1] != Math.abs(enemy)) {
-                        a++;
-                        b--;
-                    }
-                    if (copyBoard[a + 1][b - 1] > 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 1, node));
-                    } else if (copyBoard[a + 1][b - 1] < 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                    try {
+                        while (copyBoard[a + 1][b - 1] != Math.abs(enemy)) {
+                            a++;
+                            b--;
+                        }
+                        if (copyBoard[a + 1][b - 1] > 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 1, node));
+                        } else if (copyBoard[a + 1][b - 1] < 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                        }
+                    } catch (Throwable rx) {
+
                     }
                 } else if (point.x - node.coord.x < 0 && point.y - node.coord.y > 0) {
-                    while (copyBoard[a - 1][b + 1] != Math.abs(enemy)) {
-                        a--;
-                        b++;
-                    }
-                    if (copyBoard[a - 1][b + 1] > 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 1, node));
-                    } else if (copyBoard[a - 1][b + 1] < 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                    try {
+                        while (copyBoard[a - 1][b + 1] != Math.abs(enemy)) {
+                            a--;
+                            b++;
+                        }
+                        if (copyBoard[a - 1][b + 1] > 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 1, node));
+                        } else if (copyBoard[a - 1][b + 1] < 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                        }
+                    } catch (Throwable ex) {
+
                     }
                 } else if (point.x - node.coord.x > 0 && point.y - node.coord.y > 0) {
-                    while (copyBoard[a + 1][b + 1] != Math.abs(enemy)) {
-                        a++;
-                        b++;
-                    }
-                    if (copyBoard[a + 1][b + 1] > 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 1, node));
-                    } else if (copyBoard[a - 1][b + 1] < 0) {
-                        listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                    try {
+                        while (copyBoard[a + 1][b + 1] != Math.abs(enemy)) {
+                            a++;
+                            b++;
+                        }
+
+                        if (copyBoard[a + 1][b + 1] > 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 1, node));
+                        } else if (copyBoard[a - 1][b + 1] < 0) {
+                            listNode.add(new Node(new Point(point.x, point.y), 3, node));
+                        }
+                    } catch (Throwable ez) {
+
                     }
                 }
             }
+
             for (Node node1 : listNode) {
                 int[][] mas = copyBoard(copyBoard);
+                if (mas[node.coord.x][node.coord.y] > 0) {
+                    mover.fight(mas, node.coord.x, node.coord.y, node1.coord.x, node1.coord.y);
+                } else if (mas[node.coord.x][node.coord.y] < 0) {
+                    mover.fightCat(mas, node.coord.x, node.coord.y, node1.coord.x, node1.coord.y);
+                }
+                if (mover.step != player) {
+                    mover.changePlayer();
+                }
                 node1.position = buildTree(node1, mas);
             }
             return listNode;
@@ -229,7 +316,7 @@ public class AI {
     public void calcValue(Node tree, Node root, int count) {
         count += tree.value;
         comparelistMoves.add(tree.coord);
-        while (tree.position != null && tree.position.size() != 0) {
+        if (tree.position != null && tree.position.size() != 0) {
             calcValue(tree.position.get(0), root, count);
         }
         if (count > len) {
@@ -237,7 +324,15 @@ public class AI {
             listMoves = comparelistMoves;
             comparelistMoves = new ArrayList<>();
             tree.parent.position.remove(0);
+        } else if (tree != root) {
+            comparelistMoves = new ArrayList<>();
+            if (tree.parent.position != null && tree.parent.position.size() != 0)
+            tree.parent.position.remove(0);
+
+        } else {
+            return;
         }
+        System.out.println("rjk-dj " + count);
         if (root.position != null && root.position.size() != 0) {
             calcValue(root, root, 0);
         }
@@ -245,13 +340,38 @@ public class AI {
 
     public void moveAI(int[][] board) {
         ArrayList<Point> posibleMove = new ArrayList<>();
+        ArrayList<Point> dangerPos = new ArrayList<>();
+        // вызов canfight and canfightcat для всех дамок;)
+        mover.changePlayer(); // смена игрока для доступа к фишкам врага
+        dangerPos.addAll(mover.canFight(board));
+        mover.changePlayer();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] < 0) {
+                    dangerPos.addAll(mover.canFightCat(board, i, j, enemy));
+                }
+            }
+        }
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (Math.abs(board[i][j]) == player) {
                     if (player == 1) {
                         if (board[i][j] > 0) {
-                            if (mover.canMove(GameBoard.board, i, j, i + 1, j + 1) || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)) {
-                                posibleMove.add(new Point(i, j));
+                            try {
+                                if (mover.canMove(GameBoard.board, i, j, i + 1, j + 1)) {
+                                    posibleMove.add(new Point(i, j));
+                                    continue;
+                                }
+                            } catch (Throwable ex) {
+
+                            }
+                            try {
+                                if (mover.canMove(GameBoard.board, i, j, i + 1, j - 1)) {
+                                    posibleMove.add(new Point(i, j));
+                                    continue;
+                                }
+                            } catch (Throwable ex) {
+
                             }
                         } else if (board[i][j] < 0) {
                             try {
@@ -285,8 +405,21 @@ public class AI {
                         }
                     } else if (player == 2) {
                         if (board[i][j] > 0) {
-                            if (mover.canMove(GameBoard.board, i, j, i - 1, j - 1) || mover.canMove(GameBoard.board, i, j, i + 1, j - 1)) {
-                                posibleMove.add(new Point(i, j));
+                            try {
+                                if (mover.canMove(GameBoard.board, i, j, i - 1, j - 1)) {
+                                    posibleMove.add(new Point(i, j));
+                                    continue;
+                                }
+                            } catch (Throwable ex) {
+
+                            }
+                            try {
+                                if (mover.canMove(GameBoard.board, i, j, i - 1, j + 1)) {
+                                    posibleMove.add(new Point(i, j));
+                                    continue;
+                                }
+                            } catch (Throwable ex) {
+
                             }
                         } else if (board[i][j] < 0) {
                             try {
@@ -328,11 +461,15 @@ public class AI {
             if (player == 1) {
                 if (board[i][j] > 0) {
                     try {
-                        if (mover.canMove(GameBoard.board, i, j, i + 1, j + 1) && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j + 2] != enemy) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                        if (mover.canMove(GameBoard.board, i, j, i + 1, j + 1) && !dangerPos.contains(new Point(i + 1, j + 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
                             mover.move(GameBoard.board, i, j, i + 1, j + 1);
                             return;
                         }
-                        if (mover.canMove(GameBoard.board, i, j, i - 1, j + 1) && GameBoard.board[i - 2][j] != enemy && GameBoard.board[i - 2][j + 2] != enemy && GameBoard.board[i][j + 2] != enemy) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                    } catch (Throwable ex) {
+
+                    }
+                    try {
+                        if (mover.canMove(GameBoard.board, i, j, i - 1, j + 1) && !dangerPos.contains(new Point(i - 1, j + 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
                             mover.move(GameBoard.board, i, j, i - 1, j + 1);
                             return;
                         }
@@ -342,7 +479,7 @@ public class AI {
 
                 } else if (board[i][j] < 0) {
                     try {
-                        if (board[i + 1][j + 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j + 2] != enemy) {
+                        if (board[i + 1][j + 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && !dangerPos.contains(new Point(i + 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j + 1);
                             return;
                         }
@@ -350,7 +487,7 @@ public class AI {
                         System.out.println("ai1");
                     }
                     try {
-                        if (board[i - 1][j - 1] == 0 && GameBoard.board[i - 2][j - 2] != enemy && GameBoard.board[i][j - 2] != enemy && GameBoard.board[i - 2][j] != enemy) {
+                        if (board[i - 1][j - 1] == 0 && GameBoard.board[i - 2][j - 2] != enemy && !dangerPos.contains(new Point(i - 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j - 1);
                             return;
                         }
@@ -358,7 +495,7 @@ public class AI {
                         System.out.println("ai2");
                     }
                     try {
-                        if (board[i + 1][j - 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j - 2] != enemy) {
+                        if (board[i + 1][j - 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && !dangerPos.contains(new Point(i + 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j - 1);
                             return;
                         }
@@ -366,7 +503,7 @@ public class AI {
                         System.out.println("ai3");
                     }
                     try {
-                        if (board[i - 1][j + 1] == 0 && GameBoard.board[i - 2][j] != enemy && GameBoard.board[i - 2][j + 2] != enemy && GameBoard.board[i][j + 2] != enemy) {
+                        if (board[i - 1][j + 1] == 0 && GameBoard.board[i - 2][j] != enemy && !dangerPos.contains(new Point(i - 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j + 1);
                             return;
                         }
@@ -377,12 +514,16 @@ public class AI {
             } else if (player == 2) {
                 if (board[i][j] > 0) {
                     try {
-                        if (mover.canMove(GameBoard.board, i, j, i - 1, j - 1) && GameBoard.board[i - 2][j - 2] != enemy && GameBoard.board[i][j - 2] != enemy && GameBoard.board[i - 2][j] != enemy) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
-                            mover.move(GameBoard.board, i, j, i + 1, j + 1);
+                        if (mover.canMove(GameBoard.board, i, j, i - 1, j - 1) && !dangerPos.contains(new Point(i - 1, j - 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                            mover.move(GameBoard.board, i, j, i - 1, j - 1);
                             return;
                         }
-                        if (mover.canMove(GameBoard.board, i, j, i + 1, j - 1) && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j - 2] != enemy) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
-                            mover.move(GameBoard.board, i, j, i - 1, j + 1);
+                    } catch (Throwable ex) {
+
+                    }
+                    try {
+                        if (mover.canMove(GameBoard.board, i, j, i + 1, j - 1) && !dangerPos.contains(new Point(i + 1, j - 1))) {// || mover.canMove(GameBoard.board, i, j, i - 1, j + 1)
+                            mover.move(GameBoard.board, i, j, i + 1, j - 1);
                             return;
                         }
                     } catch (Throwable ex) {
@@ -390,7 +531,7 @@ public class AI {
                     }
                 } else if (board[i][j] < 0) {
                     try {
-                        if (board[i + 1][j + 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j + 2] != enemy) {
+                        if (board[i + 1][j + 1] == 0 && !dangerPos.contains(new Point(i + 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j + 1);
                             return;
                         }
@@ -398,7 +539,7 @@ public class AI {
                         System.out.println("ai1");
                     }
                     try {
-                        if (board[i - 1][j - 1] == 0 && GameBoard.board[i - 2][j - 2] != enemy && GameBoard.board[i][j - 2] != enemy && GameBoard.board[i - 2][j] != enemy) {
+                        if (board[i - 1][j - 1] == 0 && !dangerPos.contains(new Point(i - 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j - 1);
                             return;
                         }
@@ -406,7 +547,7 @@ public class AI {
                         System.out.println("ai2");
                     }
                     try {
-                        if (board[i + 1][j - 1] == 0 && GameBoard.board[i + 2][j - 2] != enemy && GameBoard.board[i + 2][j] != enemy && GameBoard.board[i][j - 2] != enemy) {
+                        if (board[i + 1][j - 1] == 0 && !dangerPos.contains(new Point(i + 1, j - 1))) {
                             mover.move(GameBoard.board, i, j, i + 1, j - 1);
                             return;
                         }
@@ -414,7 +555,7 @@ public class AI {
                         System.out.println("ai3");
                     }
                     try {
-                        if (board[i - 1][j + 1] == 0 && GameBoard.board[i - 2][j] != enemy && GameBoard.board[i - 2][j + 2] != enemy && GameBoard.board[i][j + 2] != enemy) {
+                        if (board[i - 1][j + 1] == 0 && !dangerPos.contains(new Point(i - 1, j + 1))) {
                             mover.move(GameBoard.board, i, j, i - 1, j + 1);
                             return;
                         }
@@ -424,9 +565,45 @@ public class AI {
                 }
             }
         }
-        int a = (int) (Math.random() * posibleMove.size() - 1);
+        int a = (int) (Math.random() * posibleMove.size());
         Point p = posibleMove.get(a);
-        if (GameBoard.board[p.x][p.y] < 0) {
+        if (GameBoard.board[p.x][p.y] > 0) {
+            if (player == 2) {
+                try {
+                    if (board[p.x - 1][p.y - 1] == 0 && mover.canMove(board, p.x, p.y, p.x - 1, p.y - 1)) {
+                        mover.move(GameBoard.board, p.x, p.y, p.x - 1, p.y - 1);
+                        return;
+                    }
+                } catch (Throwable ex) {
+                    System.out.println("ai4");
+                }
+                try {
+                    if (board[p.x + 1][p.y - 1] == 0 && mover.canMove(board, p.x, p.y, p.x + 1, p.y - 1)) {
+                        mover.move(GameBoard.board, p.x, p.y, p.x + 1, p.y - 1);
+                        return;
+                    }
+                } catch (Throwable ex) {
+                    System.out.println("ai4");
+                }
+            } else if (player == 1) {
+                try {
+                    if (board[p.x + 1][p.y + 1] == 0 && mover.canMove(board, p.x, p.y, p.x + 1, p.y + 1)) {
+                        mover.move(GameBoard.board, p.x, p.y, p.x + 1, p.y + 1);
+                        return;
+                    }
+                } catch (Throwable ex) {
+                    System.out.println("ai4");
+                }
+                try {
+                    if (board[p.x - 1][p.y + 1] == 0 && mover.canMove(board, p.x, p.y, p.x - 1, p.y + 1)) {
+                        mover.move(GameBoard.board, p.x, p.y, p.x - 1, p.y + 1);
+                        return;
+                    }
+                } catch (Throwable ex) {
+                    System.out.println("ai4");
+                }
+            }
+        } else if (GameBoard.board[p.x][p.y] < 0) {
             int b = (int) (Math.random() * 5);
             if (GameBoard.board[p.x - 1][p.y - 1] == 0) {
                 while (!(p.x - b >= 0 && p.x - b < 8 && p.y - b >= 0 && p.y - b < 8 && mover.canMove(GameBoard.board, p.x, p.y, p.x - b, p.y - b))) {
@@ -452,10 +629,6 @@ public class AI {
                 }
                 mover.move(GameBoard.board, p.x, p.y, p.x - b, p.y + b);
                 return;
-            }
-        } else if (GameBoard.board[p.x][p.y] > 0) {
-            if (player == 1) {
-
             }
         }
     }
