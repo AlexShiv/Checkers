@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="">
+    <list default="true" id="e75ad83e-cbf8-454f-a587-f4a6031afbbd" name="Default" comment="fix fight, but still cat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/Mover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/com/company/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/com/company/AI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Mover.java" afterDir="false" />
     </list>
     <list id="64920705-a5d2-4110-9ca8-8140977de9c5" name="проверка" comment="проверка&#10;&#10;(cherry picked from commit 873f3f6)">
       <changelist_data name="Aleksey Shiyanov" email="shiyanov1998@mail.ru" date="1520878687000" />
@@ -24,8 +22,8 @@
       <file leaf-file-name="Mover.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="339" selection-start-line="339" selection-end-line="339" />
+            <state relative-caret-position="816">
+              <caret line="581" column="13" lean-forward="true" selection-start-line="581" selection-start-column="13" selection-end-line="581" selection-end-column="13" />
               <folding>
                 <element signature="method#fightCat#0;class#Mover#0" />
                 <element signature="method#canFightCat#0;class#Mover#0" />
@@ -54,8 +52,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" selection-start-column="20" selection-end-column="20" />
+            <state relative-caret-position="1071">
+              <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -63,16 +61,17 @@
       <file leaf-file-name="AI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="342" selection-start-line="342" selection-end-line="342" />
+            <state relative-caret-position="-834">
+              <caret line="529" column="28" lean-forward="true" selection-start-line="529" selection-start-column="28" selection-end-line="529" selection-end-column="28" />
               <folding>
                 <element signature="method#AI#0;class#AI#0" />
-                <element signature="e#1048#1049#0" expanded="true" />
-                <element signature="e#1077#1078#0" expanded="true" />
+                <element signature="method#canFightChees#0;class#AI#0" />
+                <element signature="method#canMoveChess#0;class#AI#0" />
                 <element signature="method#copyBoard#0;class#AI#0" />
                 <element signature="method#buildTree#0;class#AI#0" />
                 <element signature="method#buildTree#1;class#AI#0" />
                 <element signature="method#calcValue#0;class#AI#0" />
+                <marker date="1528841359638" expanded="false" signature="19145:22816" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -81,8 +80,8 @@
       <file leaf-file-name="GameJFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+            <state relative-caret-position="799">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
         </entry>
@@ -145,12 +144,12 @@
         <option value="$PROJECT_DIR$/src/com/company/Node.java" />
         <option value="$PROJECT_DIR$/src/com/company/Menu.java" />
         <option value="$PROJECT_DIR$/src/com/company/Mover.java" />
-        <option value="$PROJECT_DIR$/src/com/company/AI.java" />
         <option value="$PROJECT_DIR$/src/com/company/GameJFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/company/AI.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1005" />
     <option name="width" value="915" />
     <option name="height" value="1035" />
@@ -183,7 +182,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,18 +200,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="company" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Algorithm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
-              <item name="Menu" type="e9f4de52:FormNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -393,7 +385,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -403,7 +394,7 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.56640625" side_tool="true" weight="0.25584593" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.43359375" visible="true" weight="0.25584593" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.43359375" weight="0.25584593" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.6609375" weight="0.3296582" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49934897" weight="0.3287483" />
       <window_info id="Capture Tool" order="2" />
@@ -482,33 +473,15 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
-          <line>124</line>
+          <line>125</line>
           <properties />
           <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
-          <line>368</line>
-          <properties />
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Mover.java</url>
-          <line>535</line>
-          <properties />
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/AI.java</url>
-          <line>342</line>
-          <properties />
-          <option name="timeStamp" value="100" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="101" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -724,38 +697,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        <state relative-caret-position="1071">
+          <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/GameJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+        <state relative-caret-position="799">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="342" selection-start-line="342" selection-end-line="342" />
+        <state relative-caret-position="-834">
+          <caret line="529" column="28" lean-forward="true" selection-start-line="529" selection-start-column="28" selection-end-line="529" selection-end-column="28" />
           <folding>
             <element signature="method#AI#0;class#AI#0" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1077#1078#0" expanded="true" />
+            <element signature="method#canFightChees#0;class#AI#0" />
+            <element signature="method#canMoveChess#0;class#AI#0" />
             <element signature="method#copyBoard#0;class#AI#0" />
             <element signature="method#buildTree#0;class#AI#0" />
             <element signature="method#buildTree#1;class#AI#0" />
             <element signature="method#calcValue#0;class#AI#0" />
+            <marker date="1528841359638" expanded="false" signature="19145:22816" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        <state relative-caret-position="816">
+          <caret line="581" column="13" lean-forward="true" selection-start-line="581" selection-start-column="13" selection-end-line="581" selection-end-column="13" />
           <folding>
             <element signature="method#fightCat#0;class#Mover#0" />
             <element signature="method#canFightCat#0;class#Mover#0" />

@@ -16,6 +16,7 @@ public class AI {
     private ArrayList<Point> comparelistMoves; // список для сравнения с оригиналом
     private int len;
     private Mover mover;
+    private static boolean flag = true;
 
     public AI(int player, Mover mover) {
         this.player = player;
@@ -454,6 +455,76 @@ public class AI {
                     }
                 }
             }
+        }
+        if (flag){
+            int a = (int) (Math.random() * posibleMove.size());
+            Point p = posibleMove.get(a);
+            if (GameBoard.board[p.x][p.y] > 0) {
+                if (player == 2) {
+                    try {
+                        if (board[p.x - 1][p.y - 1] == 0 && mover.canMove(board, p.x, p.y, p.x - 1, p.y - 1)) {
+                            mover.move(GameBoard.board, p.x, p.y, p.x - 1, p.y - 1);
+                            return;
+                        }
+                    } catch (Throwable ex) {
+                        System.out.println("ai4");
+                    }
+                    try {
+                        if (board[p.x + 1][p.y - 1] == 0 && mover.canMove(board, p.x, p.y, p.x + 1, p.y - 1)) {
+                            mover.move(GameBoard.board, p.x, p.y, p.x + 1, p.y - 1);
+                            return;
+                        }
+                    } catch (Throwable ex) {
+                        System.out.println("ai4");
+                    }
+                } else if (player == 1) {
+                    try {
+                        if (board[p.x + 1][p.y + 1] == 0 && mover.canMove(board, p.x, p.y, p.x + 1, p.y + 1)) {
+                            mover.move(GameBoard.board, p.x, p.y, p.x + 1, p.y + 1);
+                            return;
+                        }
+                    } catch (Throwable ex) {
+                        System.out.println("ai4");
+                    }
+                    try {
+                        if (board[p.x - 1][p.y + 1] == 0 && mover.canMove(board, p.x, p.y, p.x - 1, p.y + 1)) {
+                            mover.move(GameBoard.board, p.x, p.y, p.x - 1, p.y + 1);
+                            return;
+                        }
+                    } catch (Throwable ex) {
+                        System.out.println("ai4");
+                    }
+                }
+            } else if (GameBoard.board[p.x][p.y] < 0) {
+                int b = (int) (Math.random() * 5);
+                if (GameBoard.board[p.x - 1][p.y - 1] == 0) {
+                    while (!(p.x - b >= 0 && p.x - b < 8 && p.y - b >= 0 && p.y - b < 8 && mover.canMove(GameBoard.board, p.x, p.y, p.x - b, p.y - b))) {
+                        b = (int) (Math.random() * 5);
+                    }
+                    mover.move(GameBoard.board, p.x, p.y, p.x - b, p.y - b);
+                    return;
+                } else if (GameBoard.board[p.x + 1][p.y - 1] == 0) {
+                    while (!(p.x - b >= 0 && p.x - b < 8 && p.y - b >= 0 && p.y - b < 8 && mover.canMove(GameBoard.board, p.x, p.y, p.x + b, p.y - b))) {
+                        b = (int) (Math.random() * 5);
+                    }
+                    mover.move(GameBoard.board, p.x, p.y, p.x + b, p.y - b);
+                    return;
+                } else if (GameBoard.board[p.x + 1][p.y + 1] == 0) {
+                    while (!(p.x - b >= 0 && p.x - b < 8 && p.y - b >= 0 && p.y - b < 8 && mover.canMove(GameBoard.board, p.x, p.y, p.x + b, p.y + b))) {
+                        b = (int) (Math.random() * 5);
+                    }
+                    mover.move(GameBoard.board, p.x, p.y, p.x + b, p.y + b);
+                    return;
+                } else if (GameBoard.board[p.x - 1][p.y + 1] == 0) {
+                    while (!(p.x - b >= 0 && p.x - b < 8 && p.y - b >= 0 && p.y - b < 8 && mover.canMove(GameBoard.board, p.x, p.y, p.x - b, p.y + b))) {
+                        b = (int) (Math.random() * 5);
+                    }
+                    mover.move(GameBoard.board, p.x, p.y, p.x - b, p.y + b);
+                    return;
+                }
+            }
+            flag = false;
+            return;
         }
         for (Point point : posibleMove) {
             int i = point.x;
